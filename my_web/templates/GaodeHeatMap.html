@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>基本热力图 - 3D</title>
+    <style>
+        html, body, #container {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="container" class="container"></div>
+<!--<script src="./script/loca.js"></script>-->
+<script src="//webapi.amap.com/loca?v=1.2.1&key=5fec4da90246a992f19a9a8c1e654ad1"></script>
+<script src="//a.amap.com/Loca/static/mock/heatmapData.js"></script>
+<script>
+
+    var map = Loca.create('container', {
+        features: ['bg', 'road'],
+        mapStyle: 'amap://styles/midnight',
+        center: [116.397475, 39.908668],
+        pitch: 50,
+        zoom: 10,
+        // Loca 自 1.2.0 起 viewMode 模式默认为 3D，如需 2D 模式，请显示配置。
+        // viewMode: '3D'
+    });
+
+    var layer = Loca.visualLayer({
+        container: map,
+        type: 'heatmap',
+        // 基本热力图
+        shape: 'normal'
+    });
+
+    var list = [];
+    var i = -1, length = heatmapData.length;
+    while (++i < length) {
+        var item = heatmapData[i];
+        list.push({
+            coordinate: [item.lng, item.lat],
+            count: item.count
+        })
+    }
+
+    layer.setData(list, {
+        lnglat: 'coordinate',
+        value: 'count'
+    });
+
+    layer.setOptions({
+        style: {
+            radius: 30,
+            color: {
+                0.5: '#2c7bb6',
+                0.65: '#abd9e9',
+                0.7: '#ffffbf',
+                0.9: '#fde468',
+                1.0: '#d7191c'
+            }
+        }
+    });
+
+    layer.render();
+
+</script>
+</body>
+</html>

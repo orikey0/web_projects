@@ -1,0 +1,459 @@
+/* 1.主页部分diyCSS */
+
+#mapContainer {
+    margin: 0 0 0 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    /* touch-action: none; */
+    /* background-color: black; */
+    display: block;
+}
+
+.clear {
+    clear: both
+}
+
+
+/* index右侧loop栏的自定义样式 */
+
+
+/* 电子预警地图部分 */
+
+
+/* marker跳动 */
+
+.amap-marker:first-child .amap-icon img {
+    width: 25px;
+    height: 34px;
+}
+
+#panelDefault,
+#videoDefault {
+    padding: 0 0 0 0;
+    box-shadow: 0px 5px 5px;
+    margin-bottom: 0px;
+}
+
+
+/* 去掉高德地图水印 */
+
+.amap-logo {
+    right: 0 !important;
+    left: auto !important;
+    display: none;
+    opacity: 0;
+}
+
+.amap-copyright {
+    right: 70px !important;
+    left: auto !important;
+    opacity: 0;
+}
+
+
+/* 最大化最小化按钮 */
+
+#minimize {
+    display: inline-block;
+}
+
+#maximize {
+    display: none;
+}
+
+
+/* 滑动窗口部分 */
+
+
+/* Echarts部分(横向统计图表) */
+
+#EchartsContainer {
+    width: 100%;
+    height: 85%;
+    /* background-color: black; */
+}
+
+.swiper-slider-topic > p{
+    height: 100%;
+    width: 30%;
+    padding: 10px 0 0 0;
+    /* display: inline; */
+    float: left;
+}
+
+#refreshSet{
+    height: 100%;
+    width: 70%;
+    padding: 8px 0 0 0; 
+    /* display: inline; */
+    color: black;
+    float: left;
+}
+
+#refreshSet> input > label{
+    font-weight: 300;
+    color: black;
+}
+
+#radioSubmit{
+    width: 25%;
+    height: 70%;
+    /* background-color: rgb(74, 74, 211); */
+    color: black;
+    border: 1px solid gray;    
+    border-radius: 5px;
+}
+#radioSubmit:hover{
+    /* background-color: rgb(74, 74, 211); */
+    color: #007aff;
+    border: 1px solid #007aff;  
+    background-color: white;  
+    transition: all 0.4s;
+}
+
+#Slider01,
+#Slider02,
+#Slider03 {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #797979;
+}
+
+.swiper-slider-topic {
+    width: 100%;
+    height: 10%;
+    /* margin: 12px 0 0 0px; */
+    font-weight: bold;
+    /* float: left; */
+}
+
+#Slider01 > .swiper-slider-main {
+    width: 100%;
+    height: 80%;
+    padding: 10px 10px 0px 10px;
+    background: #f5f5f5;
+    /* border: 1px solid #797979; */
+    border-top: 1px solid #797979;
+    border-bottom: 1px solid #797979;
+}
+
+#Slider01>.swiper-slider-main>.datas-text {
+    font-size: 13px;
+    padding: 7px 0px 0px 0px;
+    font-weight: normal;
+}
+
+
+#Slider02>.swiper-slider-main>.datas-text {
+    text-align: left;
+    /* font-size: 13px; */
+    padding: 25px 0px 0px 25px;
+    font-weight: normal;
+}
+
+#Slider02>.swiper-slider-main {
+    width: 100%;
+    height: 80%;
+    padding: 10px 10px 0px 10px;
+    background: #f5f5f5;
+    /* border: 1px solid #797979; */
+    /* border-top: 1px solid #797979; */
+    border-bottom: none;
+}
+
+#Slider02>footer {
+    width: 100%;
+    height: 10%;
+    background: #f5f5f5;
+    border-bottom: 1px solid #797979;
+}
+
+#Slider02>footer>.showImage {
+    width: 15%;
+    height: 100%;
+    /* background-color: black; */
+    background-image: url("../img/icons/line-icon.png");
+    border: none;
+    box-shadow: none;
+    background-color: #f5f5f5;
+}
+
+#Slider02>footer>.showImage:hover {
+    cursor: pointer;
+    background-image: url("../img/icons/line-icon-hover.png");
+    transition: all 0.4s;
+}
+
+#Slider02>footer>button {
+    float: right;
+    margin-right: 40px;
+}
+
+#item1 {
+    background-position: -4px -130px;
+}
+
+#item2 {
+    background-position: -205px -9px;
+}
+
+#item3 {
+    background-position: -384px -9px;
+}
+
+
+/* 2.图表统计部分diyCSS */
+
+
+/* 3.告警联动部分diyCSS */
+
+#sectionPanel {
+    margin-bottom: 0px;
+}
+
+#securityRun,
+#securityStandby,
+#securityPerparation {
+    margin-bottom: 15px;
+}
+
+
+/* 4.实时视频部分diyCSS */
+
+.videoClass {
+    /* position: absolute; */
+    width: 100%;
+    height: 470px;
+    background-color: #eeeeee;
+    z-index: 160;
+    padding: 0 0 0 0;
+    box-shadow: 0px 5px 5px;
+    margin-bottom: 0px;
+}
+
+video,
+video>source {
+    /* position: absolute; */
+    height: 460px;
+    width: 99%;
+    z-index: 160;
+}
+
+video {
+    margin: 0px 5px 5px 5px;
+    /* border: 2px solid #797979;
+  border-radius: 2px; */
+}
+
+.videoBottom {
+    /* position: absolute; */
+    width: 100%;
+    height: 10%;
+    margin: 0px 5px 0px 5px;
+    top: 90%;
+    background-color: black;
+    z-index: 170;
+    opacity: 0.7;
+}
+
+
+/* .videoBottom > a{
+  color: #797979;
+} */
+
+#videoRefresh,
+#videoStop,
+#videoCamera,
+#videoCog {
+    font-size: 40px;
+}
+
+
+/* 特殊开关的CSS */
+#speedRadio{
+    width: 190px;
+    padding: 5px 0 0 10px;
+}
+
+
+.heading {
+    height: 100%;
+    width: 70px;
+    padding: 3.5px 0 0 0;
+    /* background: greenyellow; */
+    text-align: center;
+}
+
+
+/* 视频回放的侧边栏 */
+
+.onOffSwitch {
+    position: relative;
+    width: 120px;
+    height: 32px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border-left: 1px solid rgba(0, 0, 0, .09);
+    line-height: 25px;
+    font-size: 14px;
+    /* background: black; */
+    /* left: 30px; */
+    float: left;
+}
+
+.seek {
+    height: 505.6px;
+    background-color: #eeeeee;
+    padding: 0 0 0 0;
+    box-shadow: 0px 5px 5px;
+    /* border: 2px solid gray; */
+}
+
+#Slider02 > .panel > .seek > .seekFiter{
+    /* border: 1px solid wheat; */
+}
+
+.seekFiter {
+    width: 97%;
+    height: 91%;
+    /* min-height: 91%; */
+    margin: 5px 5px 5px 5px;
+    /* border: 1px solid black; */
+}
+
+#Slider02 > .panel > .seek > .seekFiter > .seekFiterTopic{
+    height: 60%;
+    font-size: smaller;
+}
+
+#Slider02 > .panel > .seek > .seekFiter > .seekFiterMain{
+    height: 30%;
+    padding: 0 0 0 0;
+    font-size: small;
+    /* border: none; */
+}
+#Slider02 > .panel > .seek > .seekFiter > .seekFiterMain > div{
+    margin: 5px 0 0 0;
+}
+
+#Slider02 > .panel > .seek > .seekFiter > footer{
+    height: 7%;
+}
+
+.seekFiterTopic > p{
+    text-align: left;
+    margin: 5px 0 0 0;
+}
+
+.seekFiterTopic {
+    width: 100%;
+    height: 15%;
+}
+
+#seekFactor {
+    width: 100%;
+    height: 65%;
+    border: 1px solid rgb(21, 146, 48);
+}
+
+#seekFactor1,
+#seekFactor2,
+#seekFactor3 {
+    width: 33.3%;
+    float: left;
+}
+
+#seekFactor2 {
+    border-left: 1px solid rgb(21, 146, 48);
+    border-right: 1px solid rgb(21, 146, 48);
+}
+
+#seekFactor1>input,
+#seekFactor2>input,
+#seekFactor3>input {
+    width: 100%;
+    height: 50%;
+    border: none;
+    /* border: 1px solid initial; */
+    /* padding: 0 0 0 0; */
+}
+
+#seekFactor1>p,
+#seekFactor2>p,
+#seekFactor3>p {
+    width: 100%;
+    height: 49%;
+    margin: -3px 0 0 0;
+    font-size: smaller;
+    text-align: center;  
+    /* height: 100%; */
+}
+
+#seekFactor4 {
+    width: 100%;
+    height: 35%;
+}
+
+#seekFactor4 input {
+    float: left;
+    width: 49.5%;
+    height: 90%;
+    /* padding: 1px 0 1px 0px; */
+    margin: 5px 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.seekFiterMain {
+    width: 100%;
+    height: 70%;
+    border-top: 3px solid wheat;
+    border-bottom: 3px solid wheat;
+    margin: 5px 0 5px 0;
+}
+
+#seekTable1{
+    background-color: #00c4ff;
+}
+
+#seekTable1, #seekTable2{
+    width: 100%;
+    height: 100%;
+}
+
+#seekTable1 .btn-group .btn , #seekTable2 .btn-group .btn {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+
+#seekTable1 .btn-group a , #seekTable2 .btn-group a{
+    padding: 3px 2px 0 0px;
+}
+
+#seekTable1 .btn-group .btn i , #seekTable2 .btn-group .btn i {
+    width: 100%;
+    height: 100%;
+}
+
+.seekFiter footer {
+    width: 100%;
+    height: 15%;
+}
+
+.video-text-center > ul{
+    margin: -3px 0 0 25px;
+    display: block;
+}
+
+#text-center {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px 0 15px;
+    text-align: center;
+    /* background-color: red; */
+}
+
+.clear {
+    clear: both;
+}

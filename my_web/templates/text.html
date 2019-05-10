@@ -1,0 +1,14 @@
+<div><button type="button" id="testBotton" onclick="Ssss('{{ x }}')">测试</button></div>
+<script language="JavaScript">
+    function Ssss(id) {
+        var domain_name = id;    //获取要传到后台的数据
+        $.ajax({
+            type: "GET",
+            url: "test/",    //后台处理函数的url
+            data: domain_name,
+            success: function (result) {  //获取后台处理后传过来的result 
+                alert(result)
+            },
+        });
+    }
+</script>
