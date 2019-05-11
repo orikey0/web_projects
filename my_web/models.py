@@ -28,4 +28,13 @@ class camera(models.Model):
     def __unicode__(self):
         return self.id
 
+#建立一个用于人数变化的表
+class table_peo(models.Model):
 
+    num_p1 = models.IntegerField()
+
+    num_p2 = models.IntegerField()
+
+    num_p3 = models.IntegerField()
+
+    

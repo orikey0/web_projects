@@ -406,25 +406,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <!-- <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"> -->
                     <div class="col-lg-9 col-md-12">
                         <div class="panel panel-default" id="panelDefault">
                             <div class="panel-heading">
                                 <h2><i class="fa fa-map-marker red"></i><strong>电子预警地图</strong></h2>
                                 <div class="panel-actions">
-                                    <a href="index/#" class="btn-setting"><i class="fa fa-rotate-right"
+                                    <button id="btnRoute" onclick="searchRoute()">生成路径</button>
+                                    <button id="btnRoute" onclick="clearRoute()">清除路径</button>
+                                    <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"
                                             onclick="location.reload()"></i></a>
-                                    <a href="index/#" class="btn-minimize" id="minimize"
-                                        onclick="add_people_marker()"><i class="fa fa-comment"></i></a>
-                                    <a href="index/#" class="btn-minimize" id="minimize"
+                                    <!-- 生成超阈值marker -->
+                                    <!-- <a href="index.html#" class="btn-minimize" id="minimize"
+                                        onclick="add_people_marker()"><i class="fa fa-comment"></i></a> -->
+                                    <a href="index.html#" class="btn-minimize" id="minimize" onclick="searchRoute()"><i
+                                            class="fa fa-comment"></i></a>
+                                    <a href="index.html#" class="btn-minimize" id="minimize"
                                         onclick="minFunction('mapContainer111','minimize','maximize')"><i
                                             class="fa fa-chevron-up"></i></a>
-                                    <a href="index/#" class="btn-minimize" id="maximize"
+                                    <a href="index.html#" class="btn-minimize" id="maximize"
                                         onclick="maxFunction('mapContainer111','minimize','maximize')"><i
                                             class="fa fa-chevron-down"></i></a>
-                                    <a href="index/#" class="btn-close" onclick="closeFunction('panel-default')"><i
+                                    <a href="index.html#" class="btn-close" onclick="closeFunction('panel-default')"><i
                                             class="fa fa-times"></i></a>
                                 </div>
                             </div>
@@ -433,10 +435,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- </div>
-                        </div> -->
-                    <!-- <div class="swiper-pagination"></div> -->
-                    <!-- </div> -->
                     <!-- 预警信息 -->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
@@ -446,12 +444,12 @@
                                         <p>地点信息</p>
                                         <form method="GET" action="#" id="refreshSet">
                                             <label>刷新频率</label>
-                                            <input type="radio" name="refreshTime" value="3000" checked><label>3s</label>
+                                            <input type="radio" name="refreshTime" value="3000"><label>3s</label>
                                             <input type="radio" name="refreshTime" value="10000"><label>10s</label>
-                                            <input type="radio" name="refreshTime" value="30000"><label>30s</label>
+                                            <input type="radio" name="refreshTime" value="30000"
+                                                checked><label>30s</label>
                                             <!-- <input id="radioSubmit" type="submit" value="设置" disabled="disabled" onclick="setTime()"> -->
                                         </form>
-
                                     </div>
                                     <div class="swiper-slider-main">
                                         <div id="EchartsContainer"></div>
@@ -460,28 +458,136 @@
                                 </div>
                             </div>
                             <div class="swiper-slide">
+                                <div id="Slider03">
+                                    <section class="panel" id="videoDefault">
+                                        <div div="panel panel-default" class="seek">
+                                            <div class="panel-heading">
+                                                <h2><i class="fa fa-file-text"></i><strong>安保信息</strong></h2>
+                                                <div class="panel-actions">
+                                                    <a href="#" class="btn-setting"><i class="fa
+                                                                            fa-question-circle"
+                                                            onclick="alert()"></i></a>
+                                                    <a href="#" class="btn-close"
+                                                        onclick="closeFunction('panel-default')"><i
+                                                            class="fa fa-times"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="seekFiter">
+                                                <div class="seekFiterTopic">
+                                                    <button id="item1" class="showImage" title="生成解决方案"></button>
+                                                    <button id="item2" class="showImage" title="告警联动"></button>
+                                                    <button id="item3" class="showImage" title="语音对话"></button>
+                                                </div>
+                                                <div class="seekFiterMain">
+                                                    <table class="table table-striped table-advance table-hover">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th><i class="icon_ID"></i> 编号</th>
+                                                                <td>001</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><i class="icon_pin"></i> 驻地</th>
+                                                                <td>科技大学北</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><i class="icon_profile"></i> 队长</th>
+                                                                <td>朴廷</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><i class="icon_group"></i> 队员1</th>
+                                                                <td>尔萨</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><i class="icon_group"></i> 队员2</th>
+                                                                <td>亚伯拉罕</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><i class="icon_group"></i> 队员3</th>
+                                                                <td>达利亚</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><i class="icon_mobile"></i> 联系方式</th>
+                                                                <td>256001</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <footer class="video-text-center"></footer>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
                                 <div id="Slider02">
-                                    <div class="swiper-slider-topic">推荐安保人员信息</div>
-                                    <div class="swiper-slider-main">
-                                        <div class="datas-text">姓名:</div>
-                                        <div class="datas-text">年龄:</div>
-                                        <div class="datas-text">电话:</div>
-                                        <div class="datas-text">地点:</div>
-                                    </div>
-                                    <footer>
-                                        <button id="item1" class="showImage" title="生成解决方案"></button>
-                                        <button id="item2" class="showImage" title="告警联动"></button>
-                                        <button id="item3" class="showImage" title="语音对话"></button>
-                                        <!-- <img src="img/light_A.png" alt="联系安保人员"> -->
-                                    </footer>
+                                    <section class="panel" id="videoDefault">
+                                        <div div="panel panel-default" class="seek">
+                                            <div class="panel-heading">
+                                                <h2><i class="fa fa-file-text"></i><strong>统计信息</strong></h2>
+                                                <div class="panel-actions">
+                                                    <a href="#" class="btn-setting"><i class="fa
+                                                                    fa-question-circle" onclick="alert()"></i></a>
+                                                    <a href="#" class="btn-close"
+                                                        onclick="closeFunction('panel-default')"><i
+                                                            class="fa fa-times"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="seekFiter">
+                                                <div class="seekFiterTopic">
+                                                    <table class="table table-striped table-advance table-hover"
+                                                        id="seekTable1">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th><i class="icon_ID"></i> 编号</th>
+                                                                <th><i class="icon_ribbon"></i> 类型</th>
+                                                                <th><i class="icon_documents"></i>信息</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>异常类型</td>
+                                                                <td>人群拥挤</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>设备编号</td>
+                                                                <td>ID-3</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>地点</td>
+                                                                <td>科技大学北</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>阈值人数</td>
+                                                                <td>50</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td>人数</td>
+                                                                <td>65</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="seekFiterMain">
+                                                    <div><span id="todayspark4" class="spark"></span></div>
+                                                    <div class="datas-text">24小时超阈值次数统计</div>
+                                                    <div><span id="todayspark5" class="spark"></span></div>
+                                                    <div class="datas-text">超阈值统计</div>
+                                                </div>
+                                                <footer class="video-text-center"></footer>
+                                            </div>
+                                        </div>
+                                    </section>
                                 </div>
                             </div>
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                         <!-- Add Arrows -->
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+                        <!-- <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div> -->
                     </div>
                 </div>
                 <!-- project team & activity end -->
@@ -508,11 +614,14 @@
     <!-- 自定义JS -->
     <script src="{% static "js/diyJS.js"%}"></script>
     <!-- 加载地图 -->
-    <script type="text/javascript"
-        src="https://webapi.amap.com/maps?v=1.4.7&key=5fec4da90246a992f19a9a8c1e654ad1"></script>
+    <script type="text/javascript"src="https://webapi.amap.com/maps?v=1.4.7&key=5fec4da90246a992f19a9a8c1e654ad1"></script>
     <script src="{% static "js/map_operations.js"%}"></script>
+    <script>
+        window.onload = addMarkers;
+    </script>
+
     <!-- Swiper4.x使用方法 -->
-    <script src="{% static "js/swiper.min.js"></script>
+    <script src="{% static "js/swiper.min.js"%}"></script>
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper('.swiper-container', {
@@ -530,8 +639,16 @@
         });
     </script>
     <!-- Echarts引入 -->
+  
+   
+    <script>
+        var List = {{ List|safe }};
+      
+    </script>
+ 
     <script type="text/javascript" src="{% static "js/echarts.min.js"%}"></script>
-    <script type="text/javascript" src="{% static "js/diyEcharts.js"%}">var list = JSON.parse('{{ list }}')</script>
+    <script type="text/javascript" src="{% static "js/diyEcharts.js"%}"></script>
+    
     <!-- 局部刷新div -->
     <!-- <script>
         $(function () {
@@ -545,7 +662,7 @@
 
     <!-- jQuery full calendar -->
     <!-- Full Google Calendar - Calendar -->
-    <!-- <<script src="js/fullcalendar.min.js"></script>  -->
+    <!-- <script src="js/fullcalendar.min.js"></script>  -->
     <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js"%}"></script>
     <!--script for this page only-->
     <script src="{% static "js/calendar-custom.js"%}"></script>

@@ -4,8 +4,8 @@ from django.shortcuts import redirect
 # Create your views here.
 from django.http import HttpRequest
 from django.http import HttpResponse
-from .models import Post
-
+from .models import Post,table_peo
+import time
 import json
 from django.template.loader import get_template
 from .models import camera
@@ -19,8 +19,12 @@ def systemSetting(request):
     return HttpResponse(html)
 
 def index(request):    
-    List = ['1', '2']
-    return render(request, 'index.html', {'list': List})
+    table_peos = table_peo.objects.all()
+    List=[]
+    for table in table_peos:
+        List+=[table.num_p1,table.num_p2,table.num_p3]
+    
+    return render(request, 'index.html', {'List': json.dumps(List)})
    
 def notfound(request):
         template = get_template('404.html')

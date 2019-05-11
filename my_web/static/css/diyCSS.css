@@ -19,8 +19,23 @@
 
 
 /* 电子预警地图部分 */
-
-
+#btnRoute{
+    /* width: 80px; */
+    height: 75%;
+    margin: 2px 2px 0 0;
+    padding: 0 0 0 0;
+    line-height: 25px;
+    font-size: 14px;
+    color: white;
+    background-color: #007aff;
+    border: 1px solid #007aff;
+    border-radius: 5px;
+}
+#btnRoute:hover{
+    background-color: white;
+    color: #007aff;
+    transition: all 0.4s;
+}
 /* marker跳动 */
 
 .amap-marker:first-child .amap-icon img {
@@ -446,7 +461,7 @@ video {
     display: block;
 }
 
-#text-center {
+.text-center {
     width: 100%;
     height: 40px;
     padding: 0 15px 0 15px;
@@ -456,4 +471,30 @@ video {
 
 .clear {
     clear: both;
+}
+
+/* 数据库表css */
+.page_show {
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+.page_show span {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 11px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 1px;
+    border: #b7b7b7 solid 1px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+span.page_cur {
+    color: #fff;
+    border: #282828 solid 1px;
+    background-color: #424242;
 }

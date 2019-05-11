@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Post
-from .models import camera
+from .models import camera,table_peo
 #引入Post数据库
 #通过admin.site.register进行注册
 
@@ -10,6 +10,8 @@ class PostAdmin(admin.ModelAdmin):
 
 class Postadmin_2(admin.ModelAdmin):
     list_display = ('id','x','y','area')
+
 # Register your models here.
 admin.site.register(Post,PostAdmin)
 admin.site.register(camera,Postadmin_2)
+admin.site.register(table_peo)
