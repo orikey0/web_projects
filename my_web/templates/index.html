@@ -369,7 +369,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="chart-chartjs/">
+                        <a class="" href="chart_chartjs/">
                             <i class="icon_piechart"></i>
                             <span>智能分析</span>
                         </a>
@@ -615,6 +615,11 @@
     <script src="{% static "js/diyJS.js"%}"></script>
     <!-- 加载地图 -->
     <script type="text/javascript"src="https://webapi.amap.com/maps?v=1.4.7&key=5fec4da90246a992f19a9a8c1e654ad1"></script>
+    <script>
+        var COO_x = {{COO_x|safe}};
+        var COO_y = {{COO_y|safe}};
+        var COO_warm = {{COO_warn|safe}};
+    </script>
     <script src="{% static "js/map_operations.js"%}"></script>
     <script>
         window.onload = addMarkers;

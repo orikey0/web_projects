@@ -4,27 +4,36 @@ from django.shortcuts import redirect
 # Create your views here.
 from django.http import HttpRequest
 from django.http import HttpResponse
-from .models import Post,table_peo
+from .models import Post,table_peo,table_cam,table_duty_peo,table_user
 import time
 import json
 from django.template.loader import get_template
-from .models import camera
+
 
 
 def systemSetting(request):
     template = get_template('systemSetting.html')
-    cameras = camera.objects.all()
+    
     html = template.render(locals())
     
     return HttpResponse(html)
 
 def index(request):    
     table_peos = table_peo.objects.all()
+    table_cams = table_cam.objects.all()
     List=[]
+    COO_x = []
+    COO_y = []
+    COO_warn = []
+    for cam in table_cams:
+        COO_x+=[cam.x]
+        COO_y+=[cam.y]
+        COO_warn += [cam.warn_num]
     for table in table_peos:
         List+=[table.num_p1,table.num_p2,table.num_p3]
-    
-    return render(request, 'index.html', {'List': json.dumps(List)})
+#返回一系列的坐标点与坐标点的警告人数
+    return render(request, 'index.html', {'List': json.dumps(List),
+    'COO_x':json.dumps(COO_x),'COO_y':json.dumps(COO_y),'COO_warn':json.dumps(COO_warn)})
    
 def notfound(request):
         template = get_template('404.html')
