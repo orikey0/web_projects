@@ -12,8 +12,7 @@ var sLat = [36.000018315221194, 36.000015315221194, 36.002618315221194];
 var cLng = COO_x;
 var cLat = COO_y;
 var warn_num = COO_warn;
-var num = [1, 2, 3];
-var videoNum = [11, 22, 33];
+var isfirstJump = [true,true,true];
 
 var position = new AMap.LngLat(x, y); // 标准写法
 
@@ -50,8 +49,8 @@ function searchRoute() {
 }
 // function createRoute(startLngLat = [x, y], endLngLat = [Lng[2], Lat[2]])
 
-function clearRoute(){
-  if(driving){
+function clearRoute() {
+  if (driving) {
     console.log("clear old driving");
     driving.clear();
   }
@@ -75,53 +74,14 @@ function createRoute() {
 }
 
 // ************************************************************************************
-//添加超阈值点
-function add_people_marker() {
-
-  // 将创建的点标记添加到已有的地图实例：
-  for (var i = 0; i < Lng.length; ++i) {
-    var status = [Lng[i], Lat[i]];//坐标
-    // var limit = 60;
-    // var peopleNum = 50;
-    var marker = new AMap.Marker({
-      map: map,
-      position: status,
-      icon: new AMap.Icon({
-        image: "../Beta0.91/img/redMarker.png",
-        size: new AMap.Size(20, 25), //图标大小
-        imageSize: new AMap.Size(20, 25)
-      }),
-    });
-    // 生成窗体信息变量
-    var topic = "预警信息";
-    var cameraID = "CXK_RIP";
-    // var num = 228;
-    marker.on('mouseover', function (e) {
-      markerClick(e);
-      this.setAnimation("AMAP_ANIMATION_NONE");
-    });
-    // marker.on('mouseout',infoClose);
-    // marker.emit('click', {target: marker});
-    var info = createPeopleString(topic, cameraID, num[i], Lng[i], Lat[i]);
-    marker.content = info;
-    marker.on('click', open_video);
-    // 地图上标记完后存入队列
-    people_markers.push(marker);
-    // marker跳动
-    // if peopleNum >= limit{
-    marker.setAnimation("AMAP_ANIMATION_BOUNCE");
-    // }
-
-    console.log('marker == \n' + marker);
-  }
-}
-
 // 生成marker
 function addMarkers() {
   // 生成摄像头marker
   for (var i = 0; i < Lng.length; ++i) {
     var status = [Lng[i], Lat[i]];//坐标
-
+    // 超限阈值-warnLimit,当前人数-peopleNum
+    var warnLimit = warn_num[i];
+    var peopleNum = List[i];
     // var isfirstOpenWindow = true;
     var marker = new AMap.Marker({
       map: map,
@@ -132,22 +92,26 @@ function addMarkers() {
         imageSize: new AMap.Size(30, 35),
       }),
     });
+    // 如果当前人数大于阈值且第一次跳动则设置当前点跳动
+    if (peopleNum >= warnLimit && isfirstJump[i] == true) {
+      // 生成警报
+      isfirstJump[i] = false;
+      marker.setAnimation("AMAP_ANIMATION_BOUNCE");
+    }
+    else if(peopleNum < warnLimit && isfirstJump[i] == false){
+      // 警报消失，重新计数
+      isfirstJump[i] = true;
+    }
     // 生成窗体信息变量
     var topic = "摄像头信息";
     var cameraID = "ID-3";
-    // if(isfirstOpenWindow == true){
-    // marker.on('mouseover', function (e) {
-    //   markerClick(e);
-    //   this.setAnimation("AMAP_ANIMATION_NONE");
-    //   // isfirstOpenWindow = false;
-    // });
-    // }
-    // marker.setAnimation("AMAP_ANIMATION_BOUNCE");
     var info = createCameraString(topic, cameraID, sLng[i], sLat[i]);
     marker.content = info;
     marker.on('click', function (e) {
-      if (getStartLocation == false && getEndLocation == false)
+      if (getStartLocation == false && getEndLocation == false){
         markerClick(e);
+        this.setAnimation("AMAP_ANIMATION_NONE");
+      }
       // 获取生成路径的起始点和终点的坐标
       else {
         if (getStartLocation == true) {
