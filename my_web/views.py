@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 # Create your views here.
 from django.http import HttpRequest
 from django.http import HttpResponse
-from .models import Post,table_peo,table_cam,table_duty_peo,table_user
+from .models import Post,table_peo,table_cam,table_duty_peo,table_user,table_sec
 import time
 import json
 from django.template.loader import get_template
@@ -12,8 +12,10 @@ from django.template.loader import get_template
 
 
 def systemSetting(request):
+    table_duty_peos = table_duty_peo.objects.all()
     template = get_template('systemSetting.html')
-    
+    table_cams = table_cam.objects.all()
+    table_secs = table_sec.objects.all()
     html = template.render(locals())
     
     return HttpResponse(html)
@@ -21,19 +23,14 @@ def systemSetting(request):
 def index(request):    
     table_peos = table_peo.objects.all()
     table_cams = table_cam.objects.all()
-    cam_0 = table_cams[0]
+    cam_1 = table_cams[0]
+    peo_1 = table_peos[0]
    
     List=[]
     COO_x = []
     COO_y = []
     COO_warn = []
-    content = {
-        'List': json.dumps(List),
-        'COO_x':json.dumps(COO_x),
-        'COO_y':json.dumps(COO_y),
-        'COO_warn':json.dumps(COO_warn),
-        'cam_1':cam_0
-        }
+    
    
     for cam in table_cams:
         
@@ -45,7 +42,14 @@ def index(request):
         
         List+=[table.num_p1,table.num_p2,table.num_p3]
 #返回一系列的坐标点与坐标点的警告人数
-    
+    content = {
+        'List': json.dumps(List),
+        'COO_x':json.dumps(COO_x),
+        'COO_y':json.dumps(COO_y),
+        'COO_warn':json.dumps(COO_warn),
+        'cam_1':cam_1,
+        'peo_1':peo_1
+        }
     return render(request, 'index.html',content)
    
 def notfound(request):

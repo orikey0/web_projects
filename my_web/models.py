@@ -41,15 +41,17 @@ class table_cam(models.Model):
     type_cam = models.TextField()
 #启用时间
     time_cam = models.DateField(auto_now_add=True)
+#所在区域
+    area = models.TextField(default="输入所在位置")
 
 #值班人员的信息库
 class table_duty_peo(models.Model):
 #值班人员的id,姓名，性别，职位，电话
-    id = models.AutoField(primary_key=True)
+    area = models.TextField(default = "请输入所在位置")
     name = models.CharField(max_length=20)
     sex = models.CharField(max_length = 8)
     postion = models.CharField(max_length = 20)
-    tel = models.TextField()
+    tel = models.TextField(default = "请输入电话号码")
 
 #登录日志
 class log_web(models.Model):
