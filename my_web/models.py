@@ -8,7 +8,7 @@ class Post(models.Model):
     slug = models.CharField(max_length = 200)
     body = models.TextField()
     pub_data = models.DateTimeField(default = timezone.now)
-
+    
     class Meta:
         ordering = ('-pub_data',)
     
@@ -17,6 +17,7 @@ class Post(models.Model):
 
 #建立一个用于人数变化的表
 class table_peo(models.Model):
+    id = models.AutoField(primary_key=True)
 
     num_p1 = models.IntegerField()
 
@@ -35,7 +36,7 @@ class table_cam(models.Model):
     y = models.FloatField()
 # 超阈值点
     warn_num = models.IntegerField()
-    id = models.AutoField(primary_key=True)
+    #id = models.AutoField(primary_key=True)
 #设备型号
     type_cam = models.TextField()
 #启用时间

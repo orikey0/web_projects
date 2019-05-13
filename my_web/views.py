@@ -21,19 +21,32 @@ def systemSetting(request):
 def index(request):    
     table_peos = table_peo.objects.all()
     table_cams = table_cam.objects.all()
+    cam_0 = table_cams[0]
+   
     List=[]
     COO_x = []
     COO_y = []
     COO_warn = []
+    content = {
+        'List': json.dumps(List),
+        'COO_x':json.dumps(COO_x),
+        'COO_y':json.dumps(COO_y),
+        'COO_warn':json.dumps(COO_warn),
+        'cam_1':cam_0
+        }
+   
     for cam in table_cams:
+        
         COO_x+=[cam.x]
         COO_y+=[cam.y]
         COO_warn += [cam.warn_num]
+   
     for table in table_peos:
+        
         List+=[table.num_p1,table.num_p2,table.num_p3]
 #返回一系列的坐标点与坐标点的警告人数
-    return render(request, 'index.html', {'List': json.dumps(List),
-    'COO_x':json.dumps(COO_x),'COO_y':json.dumps(COO_y),'COO_warn':json.dumps(COO_warn)})
+    
+    return render(request, 'index.html',content)
    
 def notfound(request):
         template = get_template('404.html')

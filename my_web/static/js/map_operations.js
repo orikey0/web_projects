@@ -3,8 +3,7 @@
 
 var x = 120.11934041976929; //经度
 var y = 36.001618315221194; //纬度
-var Lng = [120.11934041976929, 120.12934041976929, 120.13934041976929];
-var Lat = [36.001618315221194, 36.001618315221194, 36.001618315221194];
+
 // 安保人员坐标列表
 var sLng = [120.12934041976929, 120.10935041976929, 120.12534041976929];
 var sLat = [36.000018315221194, 36.000015315221194, 36.002618315221194];
@@ -77,8 +76,8 @@ function createRoute() {
 // 生成marker
 function addMarkers() {
   // 生成摄像头marker
-  for (var i = 0; i < Lng.length; ++i) {
-    var status = [Lng[i], Lat[i]];//坐标
+  for (var i = 0; i < cLng.length; ++i) {
+    var status = [cLng[i], cLat[i]]; //坐标
     // 超限阈值-warnLimit,当前人数-peopleNum
     var warnLimit = warn_num[i];
     var peopleNum = List[i];
@@ -105,7 +104,7 @@ function addMarkers() {
     // 生成窗体信息变量
     var topic = "摄像头信息";
     var cameraID = "ID-3";
-    var info = createCameraString(topic, cameraID, sLng[i], sLat[i]);
+    var info = createCameraString(topic, cameraID, cLng[i], cLat[i]);
     marker.content = info;
     marker.on('click', function (e) {
       if (getStartLocation == false && getEndLocation == false){
@@ -132,11 +131,11 @@ function addMarkers() {
     marker.on('dblclick', open_video);
     // 地图上标记完后存入队列
     camera_markers.push(marker);
-    console.log('camera == \n' + marker);
+    // console.log('camera == \n' + marker);
   }
 
   //安保markers
-  for (var i = 0; i < Lng.length; ++i) {
+  for (var i = 0; i < sLng.length; ++i) {
     var status = [sLng[i], sLat[i]];//坐标
     var marker = new AMap.Marker({
       map: map,
@@ -176,7 +175,7 @@ function addMarkers() {
     // marker.on('click', open_securityPage);
     // 地图上标记完后存入队列
     security_markers.push(marker);
-    console.log('security == \n' + marker);
+    // console.log('security == \n' + marker);
   }
   console.log("生成一次markers");
 }
@@ -188,7 +187,7 @@ function markerClick(e) {
   // console.log("status == " + status);
   map.panTo(status);
   infoWindow.open(map, status);
-  console.log("info open");
+  // console.log("info open");
   // sliderTo(2,1000,false);
 }
 function infoClose() {
