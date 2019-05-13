@@ -17,7 +17,7 @@ def systemSetting(request):
     table_cams = table_cam.objects.all()
     table_secs = table_sec.objects.all()
     html = template.render(locals())
-    pintf("hello")
+   
     return HttpResponse(html)
 
 def index(request):    
