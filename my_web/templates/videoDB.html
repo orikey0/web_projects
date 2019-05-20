@@ -351,27 +351,45 @@
         <!--header end-->
 
         <!--sidebar start-->
-        <aside>
-            <div id="sidebar" class="nav-collapse">
+         <aside>
+            <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="/index/">
+                        <a class="" href="/index">
                             <i class="icon_house_alt"></i>
                             <span>主页</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="/systemSetting/">
-                            <i class="icon_cogs"></i>
-                            <span>系统配置</span>
+                        <a class="" href="/chart_chartjs">
+                            <i class="icon_piechart"></i>
+                            <span>智能分析</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="" href="/workCalendar/">
-                            <i class="icon_calendar"></i>
-                            <span>值班表</span>
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_cogs"></i>
+                            <span>系统配置</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
+                        <ul class="sub">
+                            <li><a class="" href="/camera_management">监控管理</a></li>
+                            <li><a class="" href="/work_management">值班管理</a></li>
+                            <li><a class="" href="/security_management">安保管理</a></li>                            
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_table"></i>
+                            <span>人员管理</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="/run_management">出勤人员</a></li>
+                            <li><a class="" href="/ready_management">待命人员</a></li>
+                            <li><a class="" href="/standby_management">预备人员</a></li>                            
+                        </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
@@ -380,35 +398,18 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/logManagement/">日志管理</a></li>
-                            <li><a class="" href="/userManagement/">用户管理</a></li>
+                            <li><a class="" href="/logManagement">日志管理</a></li>                  
+                            <li><a class="" href="/userManagement">用户管理</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;" class="">
+                        <a href="/videoDB" class="">
                             <i class="icon_desktop"></i>
-                            <span>视频操作</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="/videoView/">实时视频</a></li>
-                            <li><a class="" href="/videoDB/">视频回放</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="" href="/chart_chartjs/">
-                            <i class="icon_piechart"></i>
-                            <span>智能分析</span>
+                            <span>视频回放</span>
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="/basic_table/" class="">
-                            <i class="icon_table"></i>
-                            <span>告警联动</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/warningVideoDB/" class="">
+                        <a href="/warningVideoDB" class="">
                             <i class="icon_ribbon_alt"></i>
                             <span>告警数据</span>
                         </a>
