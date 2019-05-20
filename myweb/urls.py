@@ -20,22 +20,25 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from my_web.views import index
-from my_web.views import systemSetting
+
 from my_web.views import notfound,bar_y_category_stack,basic_table,blank
 from my_web.views import chart_chartjs,GaodeHeatMap,logManagement,login
 from my_web.views import swicthOn,userManagement,videoDB,videoView,warningVideoDB,workCalendar
+from my_web.views import camera_management,work_management,run_management,security_management
+from my_web.views import ready_management,standby_management
 
 urlpatterns = [
     url(r'^admin/',admin.site.urls),
    
-    url(r'^systemSetting/',systemSetting),
+    url(r'camera_management/',camera_management),
+    url(r'work_management/',work_management),
+    url(r'run_management/',run_management),
+    url(r'security_management/',security_management),
+    url(r'standby_management/',standby_management),
+    url(r'ready_management/',ready_management),
     
     url(r'index/',index),
-
-    url(r'^notfound/',notfound),
-
-    url(r'^bar_y_category_stack/',bar_y_category_stack),
-
+   
     url(r'^basic_table/',basic_table),
 
     url(r'^blank/',blank),

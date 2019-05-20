@@ -1,5 +1,12 @@
 /* 1.主页部分diyCSS */
 
+body {
+    background-image: url("/static/img/bg-2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 #mapContainer {
     margin: 0 0 0 0;
     width: 100%;
@@ -19,7 +26,7 @@
 
 
 /* 电子预警地图部分 */
-#btnRoute{
+.btnRoute {
     /* width: 80px; */
     height: 75%;
     margin: 2px 2px 0 0;
@@ -31,11 +38,50 @@
     border: 1px solid #007aff;
     border-radius: 5px;
 }
-#btnRoute:hover{
+
+.btnRoute:hover {
     background-color: white;
     color: #007aff;
     transition: all 0.4s;
 }
+
+/* 三种模式演示 */
+#quickMove {
+    background-color: #007aff;
+    border: 1px solid #007aff;
+    color: white;
+}
+
+#quickMove:hover {
+    background-color: white;
+    color: #007aff;
+    transition: all 0.4s;
+}
+
+#exceddDensity {
+    background-color: orange;
+    border: 1px solid orange;
+    color: white;
+}
+
+#exceddDensity:hover {
+    background-color: white;
+    color: orange;
+    transition: all 0.4s;
+}
+
+#exceedThreshold {
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+}
+
+#exceedThreshold:hover {
+    background-color: white;
+    color: red;
+    transition: all 0.4s;
+}
+
 /* marker跳动 */
 
 .amap-marker:first-child .amap-icon img {
@@ -89,7 +135,7 @@
     /* background-color: black; */
 }
 
-.swiper-slider-topic > p{
+.swiper-slider-topic>p {
     height: 100%;
     width: 30%;
     padding: 10px 0 0 0;
@@ -97,33 +143,34 @@
     float: left;
 }
 
-#refreshSet{
+#refreshSet {
     height: 100%;
     width: 70%;
-    padding: 8px 0 0 0; 
+    padding: 8px 0 0 0;
     /* display: inline; */
     color: black;
     float: left;
 }
 
-#refreshSet> input > label{
+#refreshSet>input>label {
     font-weight: 300;
     color: black;
 }
 
-#radioSubmit{
+#radioSubmit {
     width: 25%;
     height: 70%;
     /* background-color: rgb(74, 74, 211); */
     color: black;
-    border: 1px solid gray;    
+    border: 1px solid gray;
     border-radius: 5px;
 }
-#radioSubmit:hover{
+
+#radioSubmit:hover {
     /* background-color: rgb(74, 74, 211); */
     color: #007aff;
-    border: 1px solid #007aff;  
-    background-color: white;  
+    border: 1px solid #007aff;
+    background-color: white;
     transition: all 0.4s;
 }
 
@@ -143,7 +190,7 @@
     /* float: left; */
 }
 
-#Slider01 > .swiper-slider-main {
+#Slider01>.swiper-slider-main {
     width: 100%;
     height: 80%;
     padding: 10px 10px 0px 10px;
@@ -286,7 +333,7 @@ video {
 
 
 /* 特殊开关的CSS */
-#speedRadio{
+#speedRadio {
     width: 190px;
     padding: 5px 0 0 10px;
 }
@@ -325,7 +372,7 @@ video {
     /* border: 2px solid gray; */
 }
 
-#Slider02 > .panel > .seek > .seekFiter{
+#Slider03>.panel>.seek>.seekFiter {
     /* border: 1px solid wheat; */
 }
 
@@ -337,26 +384,44 @@ video {
     /* border: 1px solid black; */
 }
 
-#Slider02 > .panel > .seek > .seekFiter > .seekFiterTopic{
+#Slider02>.panel>.seek>.seekFiter>.seekFiterTopic {
+    height: 70%;
+    font-size: smaller;
+    /* border-bottom: 1px solid white; */
+}
+
+#Slider02>.panel>.seek>.seekFiter>.seekFiterMain {
+    height: 20%;
+    padding: 0 0 0 0;
+    font-size: small;
+    border: none;
+}
+
+#ss03 {
+    display: none;
+}
+
+#Slider03>.panel>.seek>.seekFiter>.seekFiterTopic {
     height: 60%;
     font-size: smaller;
 }
 
-#Slider02 > .panel > .seek > .seekFiter > .seekFiterMain{
+#Slider03>.panel>.seek>.seekFiter>.seekFiterMain {
     height: 30%;
     padding: 0 0 0 0;
     font-size: small;
     /* border: none; */
 }
-#Slider02 > .panel > .seek > .seekFiter > .seekFiterMain > div{
+
+#Slider03>.panel>.seek>.seekFiter>.seekFiterMain>div {
     margin: 5px 0 0 0;
 }
 
-#Slider02 > .panel > .seek > .seekFiter > footer{
+#Slider03>.panel>.seek>.seekFiter>footer {
     height: 7%;
 }
 
-.seekFiterTopic > p{
+.seekFiterTopic>p {
     text-align: left;
     margin: 5px 0 0 0;
 }
@@ -401,7 +466,7 @@ video {
     height: 49%;
     margin: -3px 0 0 0;
     font-size: smaller;
-    text-align: center;  
+    text-align: center;
     /* height: 100%; */
 }
 
@@ -427,26 +492,30 @@ video {
     margin: 5px 0 5px 0;
 }
 
-#seekTable1{
-    background-color: #00c4ff;
+#seekTable1 {
+    color: black;
 }
 
-#seekTable1, #seekTable2{
+#seekTable1,
+#seekTable2 {
     width: 100%;
     height: 100%;
 }
 
-#seekTable1 .btn-group .btn , #seekTable2 .btn-group .btn {
+#seekTable1 .btn-group .btn,
+#seekTable2 .btn-group .btn {
     width: 25px;
     height: 25px;
     text-align: center;
 }
 
-#seekTable1 .btn-group a , #seekTable2 .btn-group a{
+#seekTable1 .btn-group a,
+#seekTable2 .btn-group a {
     padding: 3px 2px 0 0px;
 }
 
-#seekTable1 .btn-group .btn i , #seekTable2 .btn-group .btn i {
+#seekTable1 .btn-group .btn i,
+#seekTable2 .btn-group .btn i {
     width: 100%;
     height: 100%;
 }
@@ -456,7 +525,7 @@ video {
     height: 15%;
 }
 
-.video-text-center > ul{
+.video-text-center>ul {
     margin: -3px 0 0 25px;
     display: block;
 }
@@ -497,4 +566,24 @@ span.page_cur {
     color: #fff;
     border: #282828 solid 1px;
     background-color: #424242;
+}
+
+/* 告警事件查询的form */
+.searchForm {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    ;
+    background-color: #F7F7F7;
+    padding: 5px 0 0 10px;
+}
+
+.searchForm>input {
+    margin: 0 10px 0 5px;
+    /* border-radius: 3px; */
+}
+
+.warningCol {
+    /* border: 1px solid #ccc; */
+    opacity: 0.9;
 }

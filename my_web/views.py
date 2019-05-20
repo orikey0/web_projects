@@ -11,14 +11,54 @@ from django.template.loader import get_template
 
 
 
-def systemSetting(request):
+def userManagement(request):
     table_duty_peos = table_duty_peo.objects.all()
-    template = get_template('systemSetting.html')
     table_cams = table_cam.objects.all()
     table_secs = table_sec.objects.all()
-    html = template.render(locals())
-   
+
+    template = get_template('userManagement.html')
+    html = template.render(locals())   
     return HttpResponse(html)
+
+def logManagement(request):
+    table_duty_peos = table_duty_peo.objects.all()
+    table_cams = table_cam.objects.all()
+    table_secs = table_sec.objects.all()
+
+    template = get_template('logManagement.html')
+    html = template.render(locals())   
+    return HttpResponse(html)
+
+def camera_management(request):
+    template = get_template('camera_management.html')
+    html = template.render(locals())   
+    return HttpResponse(html)
+
+def work_management(request):
+    template = get_template('work_management.html')
+    html = template.render(locals())   
+    return HttpResponse(html)
+
+def run_management(request):
+    template = get_template('run_management.html')
+    html = template.render(locals())   
+    return HttpResponse(html)
+
+def security_management(request):
+    template = get_template('security_management.html')
+    html = template.render(locals())   
+    return HttpResponse(html)
+
+def ready_management(request):
+    template = get_template('ready_management.html')
+    html = template.render(locals())   
+    return HttpResponse(html)
+
+def standby_management(request):
+    template = get_template('standby_management.html')
+    html = template.render(locals())   
+    return HttpResponse(html)
+
 
 def index(request):    
     table_peos = table_peo.objects.all()
