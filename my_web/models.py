@@ -69,6 +69,16 @@ class table_user(models.Model):
     username = models.CharField(max_length = 20)
     user_pass = models.CharField(max_length = 20)
     user_grade = models.CharField(max_length = 20)
+
+class table_log(models.Model):
+#ID, 地点信息（x,y）， 状况 ， 处置人员 ，值班人员
+    id_camera = models.CharField(max_length = 20)
+    x_thing = models.FloatField()
+    y_thing = models.FloatField()
+
+    status = models.CharField(max_length = 20)
+    peo_name = models.CharField(max_length = 20)
+    duty_peo_name = models.CharField(max_length = 20)
     
 
 
