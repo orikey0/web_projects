@@ -1,23 +1,24 @@
 // 调用其他js文件
-// document.write("<script language=javascript src='/js/diySwiper.js>'</script>");
+// document.write("<script language=javascript src='js/disJS.js'></script>");
 
 var x = 120.11934041976929; //经度
 var y = 36.001618315221194; //纬度
-
+var Lng = [120.11934041976929, 120.12934041976929, 120.13934041976929];
+var Lat = [36.001618315221194, 36.001618315221194, 36.001618315221194];
 // 安保人员坐标列表
 var sLng = [120.12934041976929, 120.10935041976929, 120.12534041976929];
 var sLat = [36.000018315221194, 36.000015315221194, 36.002618315221194];
 // 摄像头坐标列表
-var cLng = COO_x;
-var cLat = COO_y;
-var warn_num = COO_warn;
-var isfirstJump = [true,true,true];
+var cLng = [120.13434041976929, 120.13534041976929, 120.13034041976929];
+var cLat = [36.002218315221194, 36.003518315221194, 36.004018315221194];
 
+
+
+var isfirstJump = [true,true,true];
 var position = new AMap.LngLat(x, y); // 标准写法
 
 //窗体信息
 var infoWindow = new AMap.InfoWindow({
-  // isCustom: true,  //使用自定义窗体
   offset: new AMap.Pixel(5, -20)
 });
 
@@ -48,9 +49,9 @@ function searchRoute() {
 }
 // function createRoute(startLngLat = [x, y], endLngLat = [Lng[2], Lat[2]])
 
-function clearRoute() {
-  if (driving) {
-    console.log("clear old driving");
+function clearRoute(){
+  if(driving){
+    // console.log("clear old driving");
     driving.clear();
   }
 }
@@ -77,39 +78,41 @@ function createRoute() {
 function addMarkers() {
   // 生成摄像头marker
   for (var i = 0; i < cLng.length; ++i) {
-    var status = [cLng[i], cLat[i]]; //坐标
-    // 超限阈值-warnLimit,当前人数-peopleNum
-    var warnLimit = warn_num[i];
-    var peopleNum = List[i];
-    // var isfirstOpenWindow = true;
+    var status = [cLng[i], cLat[i]];//坐标
     var marker = new AMap.Marker({
       map: map,
       position: status,
       icon: new AMap.Icon({
-        image: "/static/img/redMarker.png",
+        image: "../Beta0.91/img/redMarker.png",
         size: new AMap.Size(30, 35), //图标大小
         imageSize: new AMap.Size(30, 35),
       }),
     });
-    // 如果当前人数大于阈值且第一次跳动则设置当前点跳动
-    if (peopleNum >= warnLimit && isfirstJump[i] == true) {
+    if (peopleNum[i] >= warnLimit[i] && isfirstJump[i] == true) {
       // 生成警报
-      isfirstJump[i] = false;
       marker.setAnimation("AMAP_ANIMATION_BOUNCE");
+      isfirstJump[i] = false;
     }
-    else if(peopleNum < warnLimit && isfirstJump[i] == false){
+    else if(peopleNum[i] < warnLimit[i] && isfirstJump[i] == false){
       // 警报消失，重新计数
       isfirstJump[i] = true;
     }
+
     // 生成窗体信息变量
     var topic = "摄像头信息";
     var cameraID = "ID-3";
     var info = createCameraString(topic, cameraID, cLng[i], cLat[i]);
     marker.content = info;
+    var that = this;
     marker.on('click', function (e) {
       if (getStartLocation == false && getEndLocation == false){
         markerClick(e);
         this.setAnimation("AMAP_ANIMATION_NONE");
+        console.log("i == " + that.i);
+        // 对象内调用自己的属性
+        // 正常情况下点击marker是打不开此部分的
+        // 用flag的话目前做不到针对每个marker分别取值
+        // createWarning(1);
       }
       // 获取生成路径的起始点和终点的坐标
       else {
@@ -123,7 +126,6 @@ function addMarkers() {
           endLngLat = e.target;
           getEndLocation = false;
           startLngLat.setAnimation("AMAP_ANIMATION_NONE");
-          // 两个点都获取到了，开始生成路径
           createRoute();
         }
       }
@@ -131,7 +133,6 @@ function addMarkers() {
     marker.on('dblclick', open_video);
     // 地图上标记完后存入队列
     camera_markers.push(marker);
-    // console.log('camera == \n' + marker);
   }
 
   //安保markers
@@ -141,7 +142,7 @@ function addMarkers() {
       map: map,
       position: status,
       icon: new AMap.Icon({
-        image: "/static/img/blueMarker.png",
+        image: "../Beta0.91/img/blueMarker.png",
         size: new AMap.Size(30, 35), //图标大小
         imageSize: new AMap.Size(30, 35)
       })
@@ -177,7 +178,7 @@ function addMarkers() {
     security_markers.push(marker);
     // console.log('security == \n' + marker);
   }
-  console.log("生成一次markers");
+  // console.log("生成一次markers");
 }
 
 function markerClick(e) {
@@ -228,7 +229,7 @@ function remove_marker(flag) {
 // 不能带参数，带参数就会自动调用
 function open_video(e) {
   e = e || window.event;
-  console.log("vidoeNum == ");
+  // console.log("vidoeNum == ");
   //  var status = e.target.getPosition();
   window.location = "videoView.html";
 }
@@ -237,8 +238,8 @@ Interval = 10000;
 function refreshMarkers() {
   map.clearMap();
   addMarkers();
-  console.log("clear once!");
+  // console.log("clear once!");
 }
 
 // 刷新生成marker
-self.setInterval("refreshMarkers()", Interval);
+// self.setInterval("refreshMarkers()", Interval);
