@@ -11,6 +11,7 @@ def density_heatmap(image, box_centers, radias=100):
     img_width = image.shape[1]
     img_height = image.shape[0]
     density_map = np.zeros((img_height, img_width))
+    
     color_map = np.empty([img_height, img_width, 3], dtype=int)
     # get gradient color using rainbow
     cmap = plt.get_cmap("rainbow") # 使用matplotlib获取颜色梯度
