@@ -1,5 +1,5 @@
 // 调用其他js文件
-// document.write("<script language=javascript src='js/disJS.js'></script>");
+document.write("<script language=javascript src='/static/js/disJS.js'></script>");
 
 var x = 120.11934041976929; //经度
 var y = 36.001618315221194; //纬度
@@ -12,10 +12,17 @@ var sLat = [36.000018315221194, 36.000015315221194, 36.002618315221194];
 var cLng = [120.13434041976929, 120.13534041976929, 120.13034041976929];
 var cLat = [36.002218315221194, 36.003518315221194, 36.004018315221194];
 
+var first = List[0];
+var second = List[1];
+var third = List[2];
 
+var peopleNum = [first,second,third];
 
 var isfirstJump = [true,true,true];
 var position = new AMap.LngLat(x, y); // 标准写法
+
+var cnt = 0;
+//标志位
 
 //窗体信息
 var infoWindow = new AMap.InfoWindow({
@@ -73,9 +80,23 @@ function createRoute() {
   });
 }
 
+function setCnt(a){
+  cnt = a;
+  console.log("map: cnt == " + cnt);
+}
+
 // ************************************************************************************
 // 生成marker
+
 function addMarkers() {
+ 
+  first = List[cnt*3];
+  second = List[cnt*3+1];
+  third = List[cnt*3+2];
+  peopleNum=[first,second,third];
+  console.log("add: cnt == " + cnt);
+  console.log("peopleNum == " + peopleNum);
+  console.log("warnLimit == " + warnLimit);
   // 生成摄像头marker
   for (var i = 0; i < cLng.length; ++i) {
     var status = [cLng[i], cLat[i]];//坐标
@@ -92,11 +113,16 @@ function addMarkers() {
       // 生成警报
       marker.setAnimation("AMAP_ANIMATION_BOUNCE");
       isfirstJump[i] = false;
+      createWarning(2);
     }
     else if(peopleNum[i] < warnLimit[i] && isfirstJump[i] == false){
       // 警报消失，重新计数
       isfirstJump[i] = true;
+      // removeWarning();
     }
+    
+
+    
 
     // 生成窗体信息变量
     var topic = "摄像头信息";
@@ -179,7 +205,9 @@ function addMarkers() {
     // console.log('security == \n' + marker);
   }
   // console.log("生成一次markers");
+ 
 }
+
 
 function markerClick(e) {
   e = e || window.event;

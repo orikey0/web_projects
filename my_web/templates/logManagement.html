@@ -325,150 +325,197 @@
 
         <!--sidebar start-->
         <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu">
-                    <li class="active">
-                        <a class="" href="/index">
-                            <i class="icon_house_alt"></i>
-                            <span>主页</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="/chart_chartjs">
-                            <i class="icon_piechart"></i>
-                            <span>智能分析</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_cogs"></i>
-                            <span>系统配置</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="/camera_management">监控管理</a></li>
-                            <li><a class="" href="/work_management">值班管理</a></li>
-                            <li><a class="" href="/security_management">安保管理</a></li>                            
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_table"></i>
-                            <span>人员管理</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="/run_management">出勤人员</a></li>
-                            <li><a class="" href="/ready_management">待命人员</a></li>
-                            <li><a class="" href="/standby_management">预备人员</a></li>                            
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_document_alt"></i>
-                            <span>信息管理</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="/logManagement">日志管理</a></li>                  
-                            <li><a class="" href="/userManagement">用户管理</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/videoDB" class="">
-                            <i class="icon_desktop"></i>
-                            <span>视频回放</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/warningVideoDB" class="">
-                            <i class="icon_ribbon_alt"></i>
-                            <span>告警数据</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a class="" href="/index/">
+                                <i class="icon_house_alt"></i>
+                                <span>主页</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="/chart_chartjs/">
+                                <i class="icon_piechart"></i>
+                                <span>智能分析</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;" class="">
+                                <i class="icon_cogs"></i>
+                                <span>系统配置</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="/camera_management/">监控管理</a></li>
+                                <li><a class="" href="/work_management/">值班管理</a></li>
+                                <li><a class="" href="/security_management/">安保管理</a></li>                            
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;" class="">
+                                <i class="icon_table"></i>
+                                <span>人员管理</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="/run_management/">出勤人员</a></li>
+                                <li><a class="" href="/ready_management/">待命人员</a></li>
+                                <li><a class="" href="/standby_management/">预备人员</a></li>                            
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;" class="">
+                                <i class="icon_document_alt"></i>
+                                <span>信息管理</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="/logManagement/">日志管理</a></li>                  
+                                <li><a class="" href="/userManagement/">用户管理</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="/videoDB/" class="">
+                                <i class="icon_desktop"></i>
+                                <span>视频回放</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="/warningVideoDB/" class="">
+                                <i class="icon_ribbon_alt"></i>
+                                <span>告警数据</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
         <!--main content start-->
         <section id="main-content">
-            <section class="wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="page-header"><i class="fa fa-book"></i>日志管理</h3>
-                        <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="/index/">主页</a></li>
-                            <li><i class="icon_document"></i>信息管理</li>
-                            <li><i class="fa fa-book"></i>日志管理</li>
-                            <!-- <li><i class="fa fa-th-list"></i>Basic Table</li> -->
-                        </ol>
-                    </div>
-                </div>
-                <!-- page start-->
-                <!-- 系统日志 -->
-                <div class="row" id="securityRun">
-                    <div class="col-lg-12">
-                        <section class="panel" id="sectionPanel">
-                            <header class="panel-heading">系统日志</header>
-                            <table class="table table-striped table-advance
-                                    table-hover">
-                                <tbody>
-                                    <tr>
-                                        <th><i class="icon_ID"></i> 编号</th>
-                                        <th><i class="icon_cogs"></i> 操作</th>
-                                        <th><i class="icon_clock"></i> 时间</th>
-                                        <th><i class="icon_archive"></i> 操作对象</th>
-                                        <th><i class="icon_id_alt"></i> 操作人员</th>
-                                        <th><i class="icon_cogs"></i> 日志记录</th>
-                                    </tr>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>山东科技大学南门</td>
-                                        <td>张小明</td>
-                                        <td>李狗蛋</td>
-                                        <td>176-026-5992</td>
-                                        <td>这是一段测试文字</td>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>002</td>
-                                        <td>2011-01-10</td>
-                                        <td>ione.gisela@high.org</td>
-                                        <td>Robert Lee</td>
-                                        <td>724-639-4784</td>
-                                        <td>这是一段测试文字</td>
-                                    </tr>
-                                    <tr>
-                                        <td>003</td>
-                                        <td>2006-10-29</td>
-                                        <td>sol.raleigh@language.edu</td>
-                                        <td>York</td>
-                                        <td>180-456-0056</td>
-                                        <td>这是一段测试文字</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </section>
-                        <div id="text-center">
-                            <ul class="pagination pagination-lg">
-                                <li><a href="#">«</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
+                <section class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="page-header"><i class="fa fa-book"></i>日志管理</h3>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-home"></i><a href="index.html">主页</a></li>
+                                <li><i class="icon_document"></i>信息管理</li>
+                                <li><i class="fa fa-book"></i>日志管理</li>
+                                <!-- <li><i class="fa fa-th-list"></i>Basic Table</li> -->
+                            </ol>
                         </div>
                     </div>
-                </div>
-                <!-- page end-->
+                    <!-- page start-->
+                    <!-- 系统日志 -->
+                    <div class="row" id="securityRun">
+                        <div class="col-lg-12">
+                            <div class="warningCol">
+                                <form class="searchForm">
+                                    日志编号:<input type="text" placeholder="日志编号">
+                                    时间:<input type="datetime-local" placeholder="XXXX-XX-XX">
+                                    地点:<input type="text">
+                                    操作人员:<input type="text">
+                                    <input type="submit" value="查询">
+                                </form>
+                                <section class="panel" id="sectionPanel">
+                                    <header class="panel-heading">系统日志</header>
+                                    <table class="table table-striped table-advance
+                                                    table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th><i class="icon_ID"></i> 编号</th>
+                                                <th><i class="icon_cogs"></i> 操作</th>
+                                                <th><i class="icon_clock"></i> 时间</th>
+                                                <th><i class="icon_archive"></i> 操作对象</th>
+                                                <th><i class="icon_id_alt"></i> 操作人员</th>
+                                                <th><i class="icon_cogs"></i> 日志记录</th>
+                                            </tr>
+                                            <tr>
+                                                <td>001</td>
+                                                <td>查看告警信息</td>
+                                                <td>2019/04/01/12:01:35</td>
+                                                <td>摄像头1</td>
+                                                <td>段誉</td>
+                                                <td>人群拥挤</td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>002</td>
+                                                <td>处理告警信息</td>
+                                                <td>2019/04/01/12:02:11</td>
+                                                <td>摄像头1</td>
+                                                <td>段誉</td>
+                                                <td>派遣安保1组处理告警状况</td>
+                                            </tr>
+                                            <tr>
+                                                <td>003</td>
+                                                <td>查看告警信息</td>
+                                                <td>2019/04/01/12:11:02</td>
+                                                <td>摄像头3</td>
+                                                <td>段誉</td>
+                                                <td>人群拥挤</td>
+                                            </tr>
+                                            <tr>
+                                                <td>004</td>
+                                                <td>处理告警信息</td>
+                                                <td>2019/04/01/12:11:57</td>
+                                                <td>摄像头3</td>
+                                                <td>段誉</td>
+                                                <td>派遣安保2组处理告警状况</td>
+                                            </tr>
+                                            <tr>
+                                                <td>005</td>
+                                                <td>查看告警信息</td>
+                                                <td>2019/04/01/12:42:13</td>
+                                                <td>摄像头2</td>
+                                                <td>段誉</td>
+                                                <td>人群快速移动，但秩序正常</td>
+                                            </tr>   
+                                            <tr>
+                                                <td>006</td>
+                                                <td>处理告警信息</td>
+                                                <td>2019/04/01/12:43:21</td>
+                                                <td>摄像头3</td>
+                                                <td>段誉</td>
+                                                <td>派遣安保3组处理告警状况</td>
+                                            </tr>
+                                            <tr>
+                                                <td>007</td>
+                                                <td>查看告警信息</td>
+                                                <td>2019/04/02/15:01:42</td>
+                                                <td>摄像头1</td>
+                                                <td>洪柱</td>
+                                                <td>人员快速移动，但秩序正常</td>
+                                            </tr>
+                                            <tr>
+                                                <td>008</td>
+                                                <td>查看告警信息</td>
+                                                <td>2019/04/02/15:02:35</td>
+                                                <td>摄像头3</td>
+                                                <td>洪柱</td>
+                                                <td>人数超阈值</td>
+                                            </tr>
+                                            <tr>
+                                                <td>009</td>
+                                                <td>处理告警信息</td>
+                                                <td>2019/04/02/15:03:40</td>
+                                                <td>摄像头3</td>
+                                                <td>洪柱</td>
+                                                <td>派遣安保3组处理告警状况</td>
+                                            </tr>               
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div id="textCenter">
+                                    <div class="page_show" id="pageShow"></div>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <!-- page end-->
+                </section>
             </section>
-        </section>
         <!--main content end-->
     </section>
     <!-- container section end -->

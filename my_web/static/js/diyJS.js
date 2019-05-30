@@ -71,6 +71,10 @@ function createWarning(flag){
     html = createContent(0);
     $("#seekTable1").html(html);
 }
+function removeWarning(){
+    $("#ss03").css({"display":"none"});
+    mySwiper.update();
+}
 $("#quickMove").click(function () {
     $("#ss03").css({"display":"block"});
     mySwiper.update();
@@ -206,5 +210,25 @@ $('textCenter03').on('click', '#pageShow03 span', function () {
     } else {
         nowPage = parseInt(page);
     }
+    getData();
+});
+$('#textCenter').on('click', '#pageShow span', function () {
+    // var $this = $(this); 声明一个变量，$this 是变量名，加$说明是jquery对象。
+    // this是document事件
+    var $this = $(this);
+    // console.log("this == " + this);
+    // $(this).hasClass('.user') 是判断当前获得的对象'$(this)'是否拥有user这个ClassName，如果有则返回true，如果没有则返回false
+    if ($this.hasClass('page_cur')) {
+        return;
+    }
+    var page = $this.html();
+    if (page == '上一页') {
+        nowPage = nowPage - 1;
+    } else if (page == '下一页') {
+        nowPage = nowPage + 1;
+    } else {
+        nowPage = parseInt(page);
+    }
+    //根据页码获取当前页列表数据
     getData();
 });

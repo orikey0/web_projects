@@ -309,141 +309,196 @@
 
         <!--sidebar start-->
         <aside>
-            <div id="sidebar" class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu">
-                    <li class="active">
-                        <a class="" href="/index/">
-                            <i class="icon_house_alt"></i>
-                            <span>主页</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="/systemSetting/">
-                            <i class="icon_cogs"></i>
-                            <span>系统配置</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="/workCalendar/">
-                            <i class="icon_calendar"></i>
-                            <span>值班表</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_document_alt"></i>
-                            <span>信息管理</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="/logManagement/">日志管理</a></li>
-                            <li><a class="" href="/userManagement/">用户管理</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_desktop"></i>
-                            <span>视频操作</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="/videoView/">实时视频</a></li>
-                            <li><a class="" href="/videoDB/">视频回放</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="" href="chart_chartjs/">
-                            <i class="icon_piechart"></i>
-                            <span>智能分析</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/basic_table/" class="">
-                            <i class="icon_table"></i>
-                            <span>告警联动</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/warningVideoDB/" class="">
-                            <i class="icon_ribbon_alt"></i>
-                            <span>告警数据</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a class="" href="/index/">
+                                <i class="icon_house_alt"></i>
+                                <span>主页</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="/chart_chartjs/">
+                                <i class="icon_piechart"></i>
+                                <span>智能分析</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;" class="">
+                                <i class="icon_cogs"></i>
+                                <span>系统配置</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="/camera_management/">监控管理</a></li>
+                                <li><a class="" href="/work_management/">值班管理</a></li>
+                                <li><a class="" href="/security_management/">安保管理</a></li>                            
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;" class="">
+                                <i class="icon_table"></i>
+                                <span>人员管理</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="/run_management/">出勤人员</a></li>
+                                <li><a class="" href="/ready_management/">待命人员</a></li>
+                                <li><a class="" href="/standby_management/">预备人员</a></li>                            
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="/javascript:;" class="">
+                                <i class="icon_document_alt"></i>
+                                <span>信息管理</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                <li><a class="" href="/logManagement/">日志管理</a></li>                  
+                                <li><a class="" href="/userManagement/">用户管理</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="/videoDB/" class="">
+                                <i class="icon_desktop"></i>
+                                <span>视频回放</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="/warningVideoDB/" class="">
+                                <i class="icon_ribbon_alt"></i>
+                                <span>告警数据</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
         <!--sidebar end-->
 
         <!--main content start-->
         <section id="main-content">
-            <section class=" wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="page-header"><i class="fa fa-cogs"></i> 系统操作</h3>
-                        <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="/index/">主页</a></li>
-                            <li><i class="fa fa-cogs"></i>系统操作</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                       
-                        <!-- 值班人员信息 -->
-                        <section class="panel" id="sectionPanel">
-                            <header class="panel-heading">值班人员</header>
-                            <table class="table table-striped table-advance
-                                    table-hover">
-                                <tbody>
-                               
-                                    <tr>
-                                        <th><i class="icon_ID"></i> 编号</th>
-                                        <th><i class="icon_pin"></i> 所在区域</th>
-                                        <th><i class="icon_profile"></i> 值班班长</th>
-                                        <th><i class="icon_group"></i> 值班队员</th>
-                                        <th><i class="icon_mobile"></i> 联系电话</th>
-                                        <th><i class="icon_cogs"></i> 操作</th>
-                                    </tr>
-                                     {% for duty_peo in table_duty_peos %}
-                                    <tr>
-                                    
-                                        <td>{{duty_peo.id}}</td>
-                                        <td>{{duty_peo.area}}</td>
-                                        <td>{{duty_peo.name}}</td>
-                                        <td>{{duty_peo.name}}</td>
-                                        <td>{{duty_peo.tel}}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                                <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                                <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-                                    {% endfor %}
-                                    
-                                   
-                                </tbody>
-                            </table>
-                        </section>
-                        <div id="text-center">
-                            <ul class="pagination pagination-lg">
-                                <li><a href="#">«</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
+                <section class=" wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="page-header"><i class="fa fa-cog"></i> 值班管理</h3>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-home"></i><a href="index.html">主页</a></li>
+                                <li><i class="fa fa-cogs"></i>系统配置</li>
+                                <li><i class="fa fa-cog"></i>值班管理</li>
+                            </ol>
                         </div>
-                     
-        </section>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="warningCol">
+                                    <form class="searchForm">
+                                            人员编号:<input type="text" placeholder="人员编号">
+                                            姓名:<input type="text" placeholder="姓名">
+                                            <input type="submit" value="查询">
+                                    </form>
+                                <section class="panel" id="sectionPanel">
+                                    <header class="panel-heading">值班人员</header>
+                                    <table class="table table-striped table-advance
+                                            table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th><i class="icon_ID"></i> 编号</th>
+                                                <th><i class="icon_pin"></i> 所在区域</th>
+                                                <th><i class="icon_profile"></i> 值班人员</th>
+                                                <th><i class="icon_mobile"></i> 联系电话</th>
+                                                <th><i class="icon_cogs"></i> 操作</th>
+                                            </tr>
+                                            <tr>
+                                                <td>001</td>
+                                                <td>山东科技大学北门</td>
+                                                <td>赵铁穆</td>
+                                                <td>17866321964</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>002</td>
+                                                <td>山东科技大学北门</td>
+                                                <td>秦羽</td>
+                                                <td>17865253691</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>003</td>
+                                                <td>山东科技大学北门</td>
+                                                <td>邵秋</td>
+                                                <td>17865751486</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>004</td>
+                                                <td>山东科技大学南门</td>
+                                                <td>单质帅</td>
+                                                <td>17865654782</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>005</td>
+                                                <td>山东科技大学南门</td>
+                                                <td>班杰明</td>
+                                                <td>17865328716</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>006</td>
+                                                <td>山东科技大学南门</td>
+                                                <td>徐冰</td>
+                                                <td>17865187346</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                                        <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div id="textCenter">
+                                    <div class="page_show" id="pageShow"></div>
+                                </div>
+                            </div>      
+                        </div>
+                    </div>
+                </section>
+            </section>
         <!--main content end-->
     </section>
     

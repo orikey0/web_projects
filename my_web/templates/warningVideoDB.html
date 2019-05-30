@@ -379,62 +379,133 @@
 
         <!--main content start-->
         <section id="main-content">
-            <section class=" wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="page-header"><i class="fa fa-cogs"></i> 告警事件</h3>
-                        <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="/index/">主页</a></li>
-                            <li><i class="fa fa-cogs"></i>告警事件</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <section class="panel" id="sectionPanel">
-                            <header class="panel-heading">摄像头信息</header>
-                            <table class="table table-striped table-advance
-                                    table-hover">
-                                <tbody>
-                                    <tr>
-                                        <th><i class="icon_ID"></i> 编号</th>
-                                        <th><i class="icon_pin"></i> 时间</th>
-                                        <th><i class="icon_profile"></i> 地点</th>
-                                        <th><i class="icon_group"></i> 超限人数</th>
-                                        <th><i class="icon_mobile"></i> 派遣安保</th>
-                                        <th><i class="icon_cogs"></i> 当值人员</th>
-                                        <th><i class="icon_cogs"></i> 处置情况</th>
-                                    </tr>
-                                    <tr>
-                                        <td>20190420_13_228</td>
-                                        <td>2019/04/20/11:26:31</td>
-                                        <td>J13</td>
-                                        <td>332</td>
-                                        <td>CXK-666</td>
-                                        <td>赵铁柱</td>
-                                        <td>已处理</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-                        <div id="text-center">
-                            <ul class="pagination pagination-lg">
-                                <li><a href="#">«</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
+                <section class=" wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="page-header"><i class="fa fa-cogs"></i> 告警事件</h3>
+                            <ol class="breadcrumb">
+                                <li><i class="fa fa-home"></i><a href="index.html">主页</a></li>
+                                <li><i class="fa fa-cogs"></i>告警事件</li>
+                            </ol>
                         </div>
                     </div>
-                </div>
-                </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="warningCol">
+                                <form class="searchForm">
+                                    视频编号:<input type="text" placeholder="视频编号">
+                                    时间:<input type="datetime-local">
+                                    地点:<input type="text">
+                                    处置情况: <input type="checkbox" name="log" value="finish"> 已处理
+                                        <input type="checkbox" name="log" value="forget"> 未处理
+                                    <input type="submit" value="查询">
+                                </form>
+                                <section class="panel" id="sectionPanel">
+                                    <header class="panel-heading">事件信息</header>
+                                    <table class="table table-striped table-advance
+                                                    table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th><i class="icon_ID"></i> 编号</th>
+                                                <th><i class="icon_clock"></i> 时间</th>
+                                                <th><i class="icon_pin"></i> 地点</th>
+                                                <th><i class="icon_profile"></i> 超限人数</th>
+                                                <th><i class="icon_group"></i> 派遣安保</th>
+                                                <th><i class="icon_id-2_alt"></i> 当值人员</th>
+                                                <th><i class="icon_cogs"></i> 处置情况</th>
+                                            </tr>
+                                            <tr>
+                                                <td>20190401_12_0135</td>
+                                                <td>2019/04/01/12:01:35</td>
+                                                <td>山东科技大学南门</td>
+                                                <td>5</td>
+                                                <td>安保1组</td>
+                                                <td>段誉</td>
+                                                <td>已处理</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20190401_12_1102</td>
+                                                <td>2019/04/01/12:11:02</td>
+                                                <td>学者餐厅</td>
+                                                <td>6</td>
+                                                <td>安保2组</td>
+                                                <td>段誉</td>
+                                                <td>已处理</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20190401_12_4213</td>
+                                                <td>2019/04/01/12:42:13</td>
+                                                <td>山东科技大学北门</td>
+                                                <td>11</td>
+                                                <td>未派遣人员处理</td>
+                                                <td>段誉</td>
+                                                <td>未处理</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20190401_15_0142</td>
+                                                <td>2019/04/02/15:01:42</td>
+                                                <td>山东科技大学南门</td>
+                                                <td>4</td>
+                                                <td>安保3组</td>
+                                                <td>洪柱</td>
+                                                <td>已处理</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20190402_15_0235</td>
+                                                <td>2019/04/02/15:02:35</td>
+                                                <td>山东科技大学北门</td>
+                                                <td>13</td>
+                                                <td>未派遣人员处理</td>
+                                                <td>洪柱</td>
+                                                <td>已处理</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20190402_17_3035</td>
+                                                <td>2019/04/02/17:30:35</td>
+                                                <td>山东科技大学北门</td>
+                                                <td>22</td>
+                                                <td>安保3组</td>
+                                                <td>洪柱</td>
+                                                <td>已处理</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20190402_17_3746</td>
+                                                <td>2019/04/02/17:37:46</td>
+                                                <td>山东科技大学北门</td>
+                                                <td>16</td>
+                                                <td>安保1组</td>
+                                                <td>洪柱</td>
+                                                <td>已处理</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20190402_17_4535</td>
+                                                <td>2019/04/02/17:45:35</td>
+                                                <td>学者餐厅</td>
+                                                <td>30</td>
+                                                <td>安保4组</td>
+                                                <td>洪柱</td>
+                                                <td>已处理</td>
+                                            </tr><tr>
+                                                <td>20190402_20_5748</td>
+                                                <td>2019/04/02/20:57:48</td>
+                                                <td>山东科技大学南门</td>
+                                                <td>13</td>
+                                                <td>安保2组</td>
+                                                <td>雷军</td>
+                                                <td>已处理</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <div id="textCenter">
+                                    <div class="page_show" id="pageShow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
             </section>
-        </section>
         <!--main content end-->
     </section>
     <!-- container section end -->

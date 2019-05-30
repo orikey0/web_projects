@@ -233,9 +233,18 @@
                     <div class="col-lg-12">
                         <section class="panel">
                             <header class="panel-heading">
-                                <button class="btnRoute" id="quickMove" onclick="refreshDiv(1)">摄像监控</button>
-                                <button class="btnRoute" id="exceddDensity" onclick="refreshDiv(2)">人流趋势</button>
-                                <button class="btnRoute" id="exceedThreshold" onclick="refreshDiv(3)">告警分析</button>
+                                    <div class="searchLink">
+                                            <form class="searchFormCharts">
+                                                    起始时间:<input id="searchBegin" type="datetime-local">
+                                                    终止时间:<input id="searchEnd" type="datetime-local">
+                                                    <input id="searchSubmit" type="submit" value="查询">
+                                            </form>
+                                    </div>
+
+                                    <button class="btnRoute" id="exceedThreshold02" onclick="refreshDiv(3)">告警分析</button>
+                                <button class="btnRoute" id="exceddDensity02" onclick="refreshDiv(2)">人流趋势</button>
+                                <button class="btnRoute" id="quickMove02" onclick="refreshDiv(1)">摄像监控</button>
+                                
                             </header>
                             <div class="panel-body">
                                 <div class="tab-pane">
