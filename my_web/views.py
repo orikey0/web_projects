@@ -11,12 +11,12 @@ from django.template.loader import get_template
 
 
 
-def userManagement(request):
+def camera_management(request):
     table_duty_peos = table_duty_peo.objects.all()
     table_cams = table_cam.objects.all()
     table_secs = table_sec.objects.all()
 
-    template = get_template('userManagement.html')
+    template = get_template('camera_management.html')
     html = template.render(locals())   
     return HttpResponse(html)
 
@@ -29,12 +29,14 @@ def logManagement(request):
     html = template.render(locals())   
     return HttpResponse(html)
 
-def camera_management(request):
-    template = get_template('camera_management.html')
+def userManagement(request):
+    template = get_template('userManagement.html')
     html = template.render(locals())   
     return HttpResponse(html)
 
 def work_management(request):
+    table_duty_peos = table_duty_peo.objects.all()  
+     
     template = get_template('work_management.html')
     html = template.render(locals())   
     return HttpResponse(html)
@@ -94,11 +96,6 @@ def index(request):
    
 def notfound(request):
         template = get_template('404.html')
-        html = template.render(locals())
-        return HttpResponse(html)
-
-def bar_y_category_stack(request):
-        template = get_template('bar-y-category-stack.html')
         html = template.render(locals())
         return HttpResponse(html)
 

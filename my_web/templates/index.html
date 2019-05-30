@@ -1,23 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    {% load staticfiles %}
     <!-- 原作者信息在此 -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    {% load staticfiles %}
-    <link rel="shortcut icon" href="{% static "img/favicon.png" %}">
+    <!-- <link rel="shortcut icon" href="{% static "img/favicon.png"%}"> -->
 
-    <title>Beta0.9 人流量计算云</title>
-    
+    <title>人流量计算云</title>
+
     <!-- 自定义css样式 -->
     <link href="{% static "css/diyCSS.css"%}" rel="stylesheet" />
     <!-- marker跳动 -->
-    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"%}" />
+    <link rel="stylesheet" href="{% static "https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"%}" />
     <!-- Swiper4.x使用 -->
     <link rel="stylesheet" href="{% static "css/swiper.min.css"%}" />
     <link rel="stylesheet" href="{% static "css/diy.swiper.min.css"%}" />
@@ -42,22 +41,21 @@
     <link rel="stylesheet" href="{% static "css/fullcalendar.css"%}">
     <link href="{% static "css/widgets.css"%}" rel="stylesheet">
     <link href="{% static "css/style.css"%}" rel="stylesheet">
-    <link href="{% static "css/style-responsive.css" %}"rel="stylesheet" />
+    <link href="{% static "css/style-responsive.css"%}" rel="stylesheet" />
     <link href="{% static "css/xcharts.min.css"%}" rel=" stylesheet">
-    <link href="{% static "css/jquery-ui-1.10.4.min.css" %}"rel="stylesheet">
+    <link href="{% static "css/jquery-ui-1.10.4.min.css"%}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-      <script src="js/lte-ie7.js"></script>
+      <script src="{% static "js/html5shiv.js"%}"></script>
+      <script src="{% static "js/respond.min.js"%}"></script>
+      <script src="{% static "js/lte-ie7.js"%}"></script>
     <![endif]-->
 </head>
 
 <body>
+        {% load staticfiles %}
     <!-- container section start -->
     <section id="container" class="">
-
-
         <header class="header dark-bg">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom">
@@ -65,7 +63,7 @@
             </div>
 
             <!--logo start-->
-            <a href="/index" class="logo">人流量 <span class="lite">计算云</span></a>
+            <a href="{% static "index.html" class="logo">人流量 <span class="lite">计算云</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -83,165 +81,9 @@
             <div class="top-nav notification-row">
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
-
-                    <!-- task notificatoin start -->
-                    <li id="task_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="icon-task-l"></i>
-                                <span class="badge bg-important">6</span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-blue"></div>
-                            <li>
-                                <p class="blue">You have 6 pending letter</p>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Design PSD </div>
-                                        <div class="percent">90%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar"
-                                            aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                            <span class="sr-only">90% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">
-                                            Project 1
-                                        </div>
-                                        <div class="percent">30%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar"
-                                            aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                            <span class="sr-only">30% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Digital Marketing</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Logo Designing</div>
-                                        <div class="percent">78%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar"
-                                            aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%">
-                                            <span class="sr-only">78% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Mobile App</div>
-                                        <div class="percent">50%</div>
-                                    </div>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="50"
-                                            aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                            <span class="sr-only">50% Complete</span>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- task notificatoin end -->
-                    <!-- inbox notificatoin start-->
-                    <li id="mail_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="icon-envelope-l"></i>
-                            <span class="badge bg-important">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-blue"></div>
-                            <li>
-                                <p class="blue">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="{% static "./img/avatar-mini.jpg"%}"></span>
-                                    <span class="subject">
-                                        <span class="from">Greg Martin</span>
-                                        <span class="time">1 min</span>
-                                    </span>
-                                    <span class="message">
-                                        I really like this admin panel.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="{% static "./img/avatar-mini2.jpg"%}"></span>
-                                    <span class="subject">
-                                        <span class="from">Bob Mckenzie</span>
-                                        <span class="time">5 mins</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi, What is next project plan?
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="{% static "./img/avatar-mini3.jpg"%}"></span>
-                                    <span class="subject">
-                                        <span class="from">Phillip Park</span>
-                                        <span class="time">2 hrs</span>
-                                    </span>
-                                    <span class="message">
-                                        I am like to buy this Admin Template.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="{% static "./img/avatar-mini4.jpg"%}"></span>
-                                    <span class="subject">
-                                        <span class="from">Ray Munoz</span>
-                                        <span class="time">1 day</span>
-                                    </span>
-                                    <span class="message">
-                                        Icon fonts are great.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox notificatoin end -->
                     <!-- alert notification start-->
                     <li id="alert_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="{% static "#">
 
                             <i class="icon-bell-l"></i>
                             <span class="badge bg-important">7</span>
@@ -252,40 +94,40 @@
                                 <p class="blue">You have 4 new notifications</p>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="label label-primary"><i class="icon_profile"></i></span> Friend Request
+                                <a href="{% static "#">
+                                    <span class="label label-primary"><i class="icon_profile"></i></span>
+                                    Friend Request
                                     <span class="small italic pull-right">5 mins</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="label label-warning"><i class="icon_pin"></i></span> John location.
+                                <a href="{% static "#">
+                                    <span class="label label-warning"><i class="icon_pin"></i></span>
+                                    John location.
                                     <span class="small italic pull-right">50 mins</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="label label-danger"><i class="icon_book_alt"></i></span> Project 3
-                                    Completed.
+                                <a href="{% static "#">
+                                    <span class="label label-danger"><i class="icon_book_alt"></i></span>
+                                    Project 3 Completed.
                                     <span class="small italic pull-right">1 hr</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="label label-success"><i class="icon_like"></i></span> Mick appreciated
-                                    your work.
+                                <a href="{% static "#">
+                                    <span class="label label-success"><i class="icon_like"></i></span>
+                                    Mick appreciated your work.
                                     <span class="small italic pull-right"> Today</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">See all notifications</a>
+                                <a href="{% static "#">See all notifications</a>
                             </li>
                         </ul>
                     </li>
-                    <!-- alert notification end-->
-                    <!-- user login dropdown start-->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="{% static "#">
                             <span class="profile-ava">
                                 <img alt="" src="{% static "img/avatar1_small.jpg"%}">
                             </span>
@@ -295,48 +137,46 @@
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
                             <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                                <a href="{% static "#"><i class="icon_profile"></i> My Profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                                <a href="{% static "#"><i class="icon_mail_alt"></i> My Inbox</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
+                                <a href="{% static "#"><i class="icon_clock_alt"></i> Timeline</a>
                             </li>
                             <li>
-                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
+                                <a href="{% static "#"><i class="icon_chat_alt"></i> Chats</a>
                             </li>
                             <li>
-                                <a href="/login/"><i class="icon_key_alt"></i> Log Out</a>
+                                <a href="{% static "login.html"><i class="icon_key_alt"></i> Log Out</a>
                             </li>
                             <li>
-                                <a href="/documentation/"><i class="icon_key_alt"></i> Documentation</a>
+                                <a href="{% static "documentation.html"><i class="icon_key_alt"></i> Documentation</a>
                             </li>
                             <li>
-                                <a href="/documentation/"><i class="icon_key_alt"></i> Documentation</a>
+                                <a href="{% static "documentation.html"><i class="icon_key_alt"></i> Documentation</a>
                             </li>
                         </ul>
                     </li>
-                    <!-- user login dropdown end -->
                 </ul>
-                <!-- notificatoin dropdown end-->
             </div>
         </header>
         <!--header end-->
 
         <!--sidebar start-->
-       <aside>
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="/index">
+                        <a class="" href="/index/">
                             <i class="icon_house_alt"></i>
                             <span>主页</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="/chart_chartjs">
+                        <a class="" href="/chart-chartjs/">
                             <i class="icon_piechart"></i>
                             <span>智能分析</span>
                         </a>
@@ -348,9 +188,9 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/camera_management">监控管理</a></li>
-                            <li><a class="" href="/work_management">值班管理</a></li>
-                            <li><a class="" href="/security_management">安保管理</a></li>                            
+                            <li><a class="" href="/camera_management/">监控管理</a></li>
+                            <li><a class="" href="/work_management/">值班管理</a></li>
+                            <li><a class="" href="/security_management/">安保管理</a></li>                            
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -360,30 +200,30 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/run_management">出勤人员</a></li>
-                            <li><a class="" href="/ready_management">待命人员</a></li>
-                            <li><a class="" href="/standby_management">预备人员</a></li>                            
+                            <li><a class="" href="/run_management/">出勤人员</a></li>
+                            <li><a class="" href="/ready_management/">待命人员</a></li>
+                            <li><a class="" href="/standby_management/">预备人员</a></li>                            
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;" class="">
+                        <a href="/javascript:;" class="">
                             <i class="icon_document_alt"></i>
                             <span>信息管理</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/logManagement">日志管理</a></li>                  
-                            <li><a class="" href="/userManagement">用户管理</a></li>
+                            <li><a class="" href="/logManagement/">日志管理</a></li>                  
+                            <li><a class="" href="/userManagement/">用户管理</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="/videoDB" class="">
+                        <a href="/videoDB/" class="">
                             <i class="icon_desktop"></i>
                             <span>视频回放</span>
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="/warningVideoDB" class="">
+                        <a href="/warningVideoDB/" class="">
                             <i class="icon_ribbon_alt"></i>
                             <span>告警数据</span>
                         </a>
@@ -392,7 +232,6 @@
                 <!-- sidebar menu end-->
             </div>
         </aside>
-
         <!--sidebar end-->
 
         <!--main content start-->
@@ -403,8 +242,8 @@
                     <div class="col-lg-12">
                         <h3 class="page-header"><i class="fa fa-laptop"></i>监控前端主页</h3>
                         <ol class="breadcrumb">
-                            <li><i class="fa fa-home"></i><a href="index/">主页</a></li>
-                            <li><i class="fa fa-laptop"></i>监控前端主页</li>
+                            <li><i class="fa fa-home"></i><a href="{% static "index.html">主页</a></li>
+                            <!-- <li><i class="fa fa-laptop"></i>监控前端主页</li> -->
                         </ol>
                     </div>
                 </div>
@@ -414,25 +253,26 @@
                             <div class="panel-heading">
                                 <h2><i class="fa fa-map-marker red"></i><strong>电子预警地图</strong></h2>
                                 <div class="panel-actions">
+                                    <!-- 快速移动->蓝色,人员密集->橙色,人数超限红色 -->
                                     <button class="btnRoute" id="quickMove">快速移动</button>
                                     <button class="btnRoute" id="exceddDensity">人员拥挤</button>
                                     <button class="btnRoute" id="exceedThreshold">人数超限</button>
                                     <button class="btnRoute" onclick="searchRoute()">生成路径</button>
                                     <button class="btnRoute" onclick="clearRoute()">清除路径</button>
-                                    <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"
+                                    <a href="{% static "index.html#" class="btn-setting"><i class="fa fa-rotate-right"
                                             onclick="location.reload()"></i></a>
                                     <!-- 生成超阈值marker -->
-                                    <!-- <a href="index.html#" class="btn-minimize" id="minimize"
-                                        onclick="add_people_marker()"><i class="fa fa-comment"></i></a> -->
-                                    <a href="index.html#" class="btn-minimize" id="minimize" onclick="searchRoute()"><i
-                                            class="fa fa-comment"></i></a>
-                                    <a href="index.html#" class="btn-minimize" id="minimize"
+                                    <a href="{% static "index.html#" class="btn-minimize" id="minimize"
+                                        onclick="refreshMarkers()"><i class="fa fa-comment"></i></a>
+                                    <!-- <a href="{% static "index.html#" class="btn-minimize" id="minimize" onclick="searchRoute()"><i
+                                            class="fa fa-comment"></i></a> -->
+                                    <a href="{% static "index.html#" class="btn-minimize" id="minimize"
                                         onclick="minFunction('mapContainer111','minimize','maximize')"><i
                                             class="fa fa-chevron-up"></i></a>
-                                    <a href="index.html#" class="btn-minimize" id="maximize"
+                                    <a href="{% static "index.html#" class="btn-minimize" id="maximize"
                                         onclick="maxFunction('mapContainer111','minimize','maximize')"><i
                                             class="fa fa-chevron-down"></i></a>
-                                    <a href="index.html#" class="btn-close" onclick="closeFunction('panel-default')"><i
+                                    <a href="{% static "index.html#" class="btn-close" onclick="closeFunction('panel-default')"><i
                                             class="fa fa-times"></i></a>
                                 </div>
                             </div>
@@ -444,7 +284,8 @@
                     <!-- 预警信息 -->
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <!-- ss01,ss02 and ss03 仅被用来显示和关闭,即display:none/block; -->
+                            <div class="swiper-slide" id="ss01">
                                 <div id="Slider01">
                                     <div class="swiper-slider-topic">
                                         <p>地点信息</p>
@@ -463,28 +304,23 @@
 
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div id="Slider03">
+                            <div class="swiper-slide" id="ss02">
+                                <div id="Slider02">
                                     <section class="panel" id="videoDefault">
                                         <div div="panel panel-default" class="seek">
                                             <div class="panel-heading">
                                                 <h2><i class="fa fa-file-text"></i><strong>安保信息</strong></h2>
                                                 <div class="panel-actions">
-                                                    <a href="#" class="btn-setting"><i class="fa
+                                                    <a href="{% static "#" class="btn-setting"><i class="fa
                                                                             fa-question-circle"
                                                             onclick="alert()"></i></a>
-                                                    <a href="#" class="btn-close"
+                                                    <a href="{% static "#" class="btn-close"
                                                         onclick="closeFunction('panel-default')"><i
                                                             class="fa fa-times"></i></a>
                                                 </div>
                                             </div>
                                             <div class="seekFiter">
                                                 <div class="seekFiterTopic">
-                                                    <button id="item1" class="showImage" title="生成解决方案"></button>
-                                                    <button id="item2" class="showImage" title="告警联动"></button>
-                                                    <button id="item3" class="showImage" title="语音对话"></button>
-                                                </div>
-                                                <div class="seekFiterMain">
                                                     <table class="table table-striped table-advance table-hover">
                                                         <tbody>
                                                             <tr>
@@ -515,8 +351,16 @@
                                                                 <th><i class="icon_mobile"></i> 联系方式</th>
                                                                 <td>256001</td>
                                                             </tr>
+                                                            <tr>
+                                                                <th class="icon_star">是否出勤</th>
+                                                                <td>已出勤</td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
+                                                </div>
+                                                <div class="seekFiterMain">
+                                                    <div><span id="todayspark3" class="spark"></span></div>
+                                                    <div class="datas-text">24小时出勤次数</div>
                                                 </div>
                                                 <footer class="video-text-center"></footer>
                                             </div>
@@ -524,57 +368,23 @@
                                     </section>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div id="Slider02">
+                            <div class="swiper-slide" id="ss03">
+                                <div id="Slider03">
                                     <section class="panel" id="videoDefault">
                                         <div div="panel panel-default" class="seek">
                                             <div class="panel-heading">
                                                 <h2><i class="fa fa-file-text"></i><strong>统计信息</strong></h2>
                                                 <div class="panel-actions">
-                                                    <a href="#" class="btn-setting"><i class="fa
+                                                    <a href="{% static "#" class="btn-setting"><i class="fa
                                                                     fa-question-circle" onclick="alert()"></i></a>
-                                                    <a href="#" class="btn-close"
+                                                    <a href="{% static "#" class="btn-close"
                                                         onclick="closeFunction('panel-default')"><i
                                                             class="fa fa-times"></i></a>
                                                 </div>
                                             </div>
                                             <div class="seekFiter">
                                                 <div class="seekFiterTopic">
-                                                    <table class="table table-striped table-advance table-hover"
-                                                        id="seekTable1">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th><i class="icon_ID"></i> 编号</th>
-                                                                <th><i class="icon_ribbon"></i> 类型</th>
-                                                                <th><i class="icon_documents"></i>信息</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>异常类型</td>
-                                                                <td>人群拥挤</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>设备编号</td>
-                                                                <td>{{cam_1.type_cam}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>地点</td>
-                                                                <td>科技大学北</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td>阈值人数</td>
-                                                                <td>{{cam_1.warn_num}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>5</td>
-                                                                <td>人数</td>
-                                                                <td>{{peo_1.num_p1}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <table class="table table-striped table-advance table-hover" id="seekTable1"></table>
                                                 </div>
                                                 <div class="seekFiterMain">
                                                     <div><span id="todayspark4" class="spark"></span></div>
@@ -591,9 +401,6 @@
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
-                        <!-- Add Arrows -->
-                        <!-- <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div> -->
                     </div>
                 </div>
                 <!-- project team & activity end -->
@@ -617,63 +424,31 @@
     <script src="{% static "js/jquery.sparkline.js"%}" type="text/javascript"></script>
     <script src="{% static "assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"%}"></script>
     <script src="{% static "js/owl.carousel.js"%}"></script>
-    <!-- 自定义JS -->
-    <script src="{% static "js/diyJS.js"%}"></script>
-    <!-- 加载地图 -->
-    <script type="text/javascript"src="https://webapi.amap.com/maps?v=1.4.7&key=5fec4da90246a992f19a9a8c1e654ad1"></script>
-    <script>
-        var COO_x = {{COO_x|safe}};
-        var COO_y = {{COO_y|safe}};
-        var COO_warn = {{COO_warn|safe}};
-    </script>
-    <script src="{% static "js/map_operations.js"%}"></script>
-    <script>
-        window.onload = addMarkers;
-    </script>
+
 
     <!-- Swiper4.x使用方法 -->
     <script src="{% static "js/swiper.min.js"%}"></script>
     <!-- Initialize Swiper -->
+    <script src="{% static "js/diySwiper.js"%}"></script>
+    <!-- 自定义JS -->
+    <script src="{% static "js/diyJS.js"%}"></script>
+    <!-- 加载地图 -->
     <script>
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            // loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+        var warnLimit = [10,6,10];
+        var peopleNum = [15,13,6];
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.7&key=5fec4da90246a992f19a9a8c1e654ad1"></script>
+    <script src="{% static "js/map_operations.js"%}"></script>
+    <script>
+        window.onload = addMarkers;
     </script>
     <!-- Echarts引入 -->
-  
-   
-    <script>
-        var List = {{ List|safe }};
-      
-    </script>
- 
     <script type="text/javascript" src="{% static "js/echarts.min.js"%}"></script>
     <script type="text/javascript" src="{% static "js/diyEcharts.js"%}"></script>
-    
-    <!-- 局部刷新div -->
-    <!-- <script>
-        $(function () {
-            console.log("refresh one");
-            setInterval(function () {
-                $("#Slider01").load(location.href + " #Slider01");//注意后面DIV的ID前面的空格，很重要！没有空格的话，会出双眼皮！（也可以使用类名）
-            }, 1000);//8秒自动刷新
-        })
-    </script> -->
-
 
     <!-- jQuery full calendar -->
     <!-- Full Google Calendar - Calendar -->
-    <!-- <script src="js/fullcalendar.min.js"></script>  -->
+    <!-- <<script src="{% static "js/fullcalendar.min.js"%}"></script>  -->
     <script src="{% static "assets/fullcalendar/fullcalendar/fullcalendar.js"%}"></script>
     <!--script for this page only-->
     <script src="{% static "js/calendar-custom.js"%}"></script>

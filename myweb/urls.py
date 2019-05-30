@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 from my_web.views import index
 
-from my_web.views import notfound,bar_y_category_stack,basic_table,blank
+from my_web.views import notfound,basic_table,blank
 from my_web.views import chart_chartjs,GaodeHeatMap,logManagement,login
 from my_web.views import swicthOn,userManagement,videoDB,videoView,warningVideoDB,workCalendar
 from my_web.views import camera_management,work_management,run_management,security_management

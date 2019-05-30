@@ -83,7 +83,7 @@ function addMarkers() {
       map: map,
       position: status,
       icon: new AMap.Icon({
-        image: "../Beta0.91/img/redMarker.png",
+        image: "/static/img/redMarker.png",
         size: new AMap.Size(30, 35), //图标大小
         imageSize: new AMap.Size(30, 35),
       }),
@@ -142,7 +142,7 @@ function addMarkers() {
       map: map,
       position: status,
       icon: new AMap.Icon({
-        image: "../Beta0.91/img/blueMarker.png",
+        image: "/static/img/blueMarker.png",
         size: new AMap.Size(30, 35), //图标大小
         imageSize: new AMap.Size(30, 35)
       })
