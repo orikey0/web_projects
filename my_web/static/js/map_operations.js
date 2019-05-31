@@ -259,7 +259,7 @@ function open_video(e) {
   e = e || window.event;
   // console.log("vidoeNum == ");
   //  var status = e.target.getPosition();
-  window.location = "videoView.html";
+  window.location.href = "/videoView";
 }
 
 Interval = 10000;
