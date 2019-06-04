@@ -37,7 +37,8 @@
         <!--header start-->
         <header class="header dark-bg">
             <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom">
+                <div class="icon-reorder tooltips" data-placement="bottom">
+                    <i id="flexButton" class="arrow_carrot-2left_alt2"></i>
                 </div>
             </div>
 
@@ -325,18 +326,18 @@
         <!--header end-->
 
         <!--sidebar start-->
-      <aside>
+        <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a class="" href="/index">
+                        <a class="" href="/index" >
                             <i class="icon_house_alt"></i>
                             <span>主页</span>
                         </a>
                     </li>
                     <li>
-                        <a class="" href="/chart_chartjs">
+                        <a class="" href="/chart_chartjs" >
                             <i class="icon_piechart"></i>
                             <span>智能分析</span>
                         </a>
@@ -348,44 +349,26 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/camera_management">监控管理</a></li>
-                            <li><a class="" href="/work_management">值班管理</a></li>
-                            <li><a class="" href="/security_management">安保管理</a></li>                            
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_table"></i>
-                            <span>人员管理</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            <li><a class="" href="/run_management">出勤人员</a></li>
-                            <li><a class="" href="/ready_management">待命人员</a></li>
-                            <li><a class="" href="/standby_management">预备人员</a></li>                            
+                            <li><a class="" href="/camera_management" >监控管理</a></li>
+                            <li><a class="" href="/userManagement" >用户管理</a></li>
+                            <li><a class="" href="/security_management" >安保管理</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_document_alt"></i>
-                            <span>信息管理</span>
+                            <span>信息查询</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/logManagement">日志管理</a></li>                  
-                            <li><a class="" href="/userManagement">用户管理</a></li>
+                            <li><a class="" href="/logManagement" >日志查询</a></li>
+                            <li><a class="" href="/warningVideoDB" >告警查询 </a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
-                        <a href="/videoDB" class="">
+                        <a href="/videoDB"  class="">
                             <i class="icon_desktop"></i>
                             <span>视频回放</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/warningVideoDB" class="">
-                            <i class="icon_ribbon_alt"></i>
-                            <span>告警数据</span>
                         </a>
                     </li>
                 </ul>
@@ -551,6 +534,7 @@
     <!-- javascripts -->
     <script src="{% static "js/jquery.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/diyJS.js" %}"></script>
     <!-- nicescroll -->
     <script src="{% static "js/jquery.scrollTo.min.js" %}"></script>
     <script src="{% static "js/jquery.nicescroll.js" %}" type="text/javascript"></script>

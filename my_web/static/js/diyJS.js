@@ -187,7 +187,7 @@ function setVideoHtml(url) {
     console.log("webm == " + webm);
     console.log("ogg == " + ogg);
     videoHtml = '';
-    videoHtml += "<video id='videoActive' style='object-fit: fill' controls='controls' autoplay='autoplay' muted>";
+    videoHtml += "<video id='videoActive' style='object-fit: fill'  autoplay='autoplay' muted>";
     videoHtml += "<source src=" + mp4 + " type='video/mp4'></source>";
     videoHtml += "<source src=" + ogg + " type='video/ogg'></source>";
     videoHtml += "<source src=" + webm + " type='video/webm'></source>";
@@ -275,3 +275,16 @@ function setDatetimeLocal(flag) {
         alert("输入日期有误！");
     }
 }
+// 菜单栏动态伸缩
+$('#flexButton').click(function () {
+    // $('#flexButton').attr(".arrow_carrot-2right_alt2"); 
+    // $('#flexButton').remove(".arrow_carrot-2left_alt2"); 
+    if ($('#flexButton').hasClass('arrow_carrot-2left_alt2')) {
+        $('#flexButton').removeClass('arrow_carrot-2left_alt2');
+        $('#flexButton').addClass('arrow_carrot-2right_alt2');
+    }
+    else if ($('#flexButton').hasClass('arrow_carrot-2right_alt2')) {
+        $('#flexButton').removeClass('arrow_carrot-2right_alt2');
+        $('#flexButton').addClass('arrow_carrot-2left_alt2');
+    }
+})
