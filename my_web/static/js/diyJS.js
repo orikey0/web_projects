@@ -1,5 +1,4 @@
-// 调用Swiper的JS文件,用作点击快速移动后刷新轮播
-document.write("<script language=javascript src='js/disSwiper.js'></script>");
+
 function openFunction(name) {
     var property = document.getElementById(name);
     property.style.display = "block";
@@ -35,15 +34,13 @@ function minFunction(name, min, max) {
     closeFunction(name);
     console.log("%s is min!", propertyA);
 }
-var warnType = ['快速移动','人群拥挤','人数超限'];
-var ID = ['ID-1','ID-2','ID-3'];
+var warnType = ['快速移动', '人群拥挤', '人数超限'];
+var ID = ['ID-1', 'ID-2', 'ID-3'];
 // 不能叫location,已经被使用了
-var place = ['科技大学北','大学生活动中心','J13正门'];
-// var limit = [10,6,10];
-// var nowPeople = [15,13,6];
+var place = ['科技大学北', '大学生活动中心', 'J13正门'];
 
 // 生成轮播预警信息的具体内容
-function createContent(flag){
+function createContent(flag) {
     var content = '';
     content += "<tr><th><i class='icon_ID'></i> 编号</th><th><i class='icon_ribbon'></i> 类型</th><th><i class='icon_documents'></i>信息</th></tr>";
     content += "<tr><td>1</td><td>异常类型</td><td>" + warnType[flag] + "</td></tr>";
@@ -57,42 +54,38 @@ function createContent(flag){
 
 // 轮播的预警信息页面改变颜色js,Jquery
 // 将Jquery封装成函数供marker使用
-function createWarning(flag){
-    $("#ss03").css({"display":"block"});
+function createWarning(flag) {
+    $("#ss03").css({ "display": "block" });
     mySwiper.update();
     var contentColor;
-    if(flag == 0)
+    if (flag == 0)
         contentColor = "#00c4ff";
-    else if(flag == 1)
+    else if (flag == 1)
         contentColor = "orange"
-    else if(flag == 2)
+    else if (flag == 2)
         contentColor = "red";
-    $("#seekTable1").css({"background-color":contentColor , "transition":"all 0.4s"});
+    $("#seekTable1").css({ "background-color": contentColor, "transition": "all 0.4s" });
     html = createContent(0);
     $("#seekTable1").html(html);
 }
-function removeWarning(){
-    $("#ss03").css({"display":"none"});
-    mySwiper.update();
-}
 $("#quickMove").click(function () {
-    $("#ss03").css({"display":"block"});
+    $("#ss03").css({ "display": "block" });
     mySwiper.update();
-    $("#seekTable1").css({"background-color":"#00c4ff" , "transition":"all 0.4s"});
+    $("#seekTable1").css({ "background-color": "#00c4ff", "transition": "all 0.4s" });
     html = createContent(0);
     $("#seekTable1").html(html);
 });
 $("#exceddDensity").click(function () {
-    $("#ss03").css({"display":"block"});
+    $("#ss03").css({ "display": "block" });
     mySwiper.update();
-    $("#seekTable1").css({"background-color":"orange" , "transition":"all 0.4s"});
+    $("#seekTable1").css({ "background-color": "orange", "transition": "all 0.4s" });
     html = createContent(1);
     $("#seekTable1").html(html);
 });
 $("#exceedThreshold").click(function () {
-    $("#ss03").css({"display":"block"});
+    $("#ss03").css({ "display": "block" });
     mySwiper.update();
-    $("#seekTable1").css({"background-color":"red" , "transition":"all 0.4s"});
+    $("#seekTable1").css({ "background-color": "red", "transition": "all 0.4s" });
     html = createContent(2);
     $("#seekTable1").html(html);
 });
@@ -125,7 +118,6 @@ function getData() {
 }
 //输出页码
 function setPage(pageCount) {
-    //var pageCount = data.pageCount;
     var pageHtml = '';
 
     if (nowPage <= 5) {
@@ -140,9 +132,6 @@ function setPage(pageCount) {
     } else {
         end = pageCount;
     }
-    // console.log("start == " + start);
-    // console.log("end == " + end);
-    // console.log("nowPage == " + nowPage);
     if (nowPage > 1) {
         pageHtml += '<span>上一页</span>';
     }
@@ -161,63 +150,8 @@ function setPage(pageCount) {
 }
 
 //根据id的不同，切换不同数据表的页面
-$('#textCenter01').on('click', '#pageShow01 span', function () {
-    // var $this = $(this); 声明一个变量，$this 是变量名，加$说明是jquery对象。
-    // this是document事件
-    var $this = $(this);
-    // console.log("this == " + this);
-    // $(this).hasClass('.user') 是判断当前获得的对象'$(this)'是否拥有user这个ClassName，如果有则返回true，如果没有则返回false
-    if ($this.hasClass('page_cur')) {
-        return;
-    }
-    var page = $this.html();
-    if (page == '上一页') {
-        nowPage = nowPage - 1;
-    } else if (page == '下一页') {
-        nowPage = nowPage + 1;
-    } else {
-        nowPage = parseInt(page);
-    }
-    //根据页码获取当前页列表数据
-    getData();
-});
-$('textCenter02').on('click', '#pageShow02 span', function () {
-    var $this = $(this);
-    // console.log("this == " + $this);
-    if ($this.hasClass('page_cur')) {
-        return;
-    }
-    var page = $this.html();
-    if (page == '上一页') {
-        nowPage = nowPage - 1;
-    } else if (page == '下一页') {
-        nowPage = nowPage + 1;
-    } else {
-        nowPage = parseInt(page);
-    }
-    getData();
-});
-$('textCenter03').on('click', '#pageShow03 span', function () {
-    var $this = $(this);
-    if ($this.hasClass('page_cur')) {
-        return;
-    }
-    var page = $this.html();
-    if (page == '上一页') {
-        nowPage = nowPage - 1;
-    } else if (page == '下一页') {
-        nowPage = nowPage + 1;
-    } else {
-        nowPage = parseInt(page);
-    }
-    getData();
-});
 $('#textCenter').on('click', '#pageShow span', function () {
-    // var $this = $(this); 声明一个变量，$this 是变量名，加$说明是jquery对象。
-    // this是document事件
     var $this = $(this);
-    // console.log("this == " + this);
-    // $(this).hasClass('.user') 是判断当前获得的对象'$(this)'是否拥有user这个ClassName，如果有则返回true，如果没有则返回false
     if ($this.hasClass('page_cur')) {
         return;
     }
@@ -232,3 +166,112 @@ $('#textCenter').on('click', '#pageShow span', function () {
     //根据页码获取当前页列表数据
     getData();
 });
+
+// 实时视频的url和相关动态html
+url = "";
+console.log("now url == " + url);
+videoHtml = "";
+
+function setUrl(url) {
+    url = url;
+    console.log("setUrl,url == " + url);
+}
+function setVideoHtml(url) {
+    url = location.href;
+    var intPos = url.indexOf("=");
+    var url = url.substr(intPos + 1);
+    mp4 = url + ".mp4";
+    webm = url + ".webm";
+    ogg = url + ".ogg";
+    console.log("mp4 == " + mp4);
+    console.log("webm == " + webm);
+    console.log("ogg == " + ogg);
+    videoHtml = '';
+    videoHtml += "<video id='videoActive' style='object-fit: fill' controls='controls' autoplay='autoplay' muted>";
+    videoHtml += "<source src=" + mp4 + " type='video/mp4'></source>";
+    videoHtml += "<source src=" + ogg + " type='video/ogg'></source>";
+    videoHtml += "<source src=" + webm + " type='video/webm'></source>";
+    videoHtml += "<p>设备不支持</p>";
+    videoHtml += "</video>";
+    console.log("videoHtml");
+    return videoHtml;
+}
+
+// 动态生成video内容
+// setVideoHtml(url);
+$('#video1').empty().append(setVideoHtml(url));
+
+// datetimelocal部分，默认日期
+//默认起始时间
+var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() - 1;
+//处理月是一位的情况
+if ((M + '').length == 1) {
+    M = '0' + (M + '');
+}
+//处理日是一位的情况
+if ((D + '').length == 1) {
+    D = '0' + (D + '')
+}
+var startDay = Y + '-' + M + '-' + D;
+// 默认终止时间
+myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() - 1 + 1;
+if ((M + '').length == 1) {
+    M = '0' + (M + '');
+}
+if ((D + '').length == 1) {
+    D = '0' + (D + '')
+}
+var endDay = Y + '-' + M + '-' + D;
+
+myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate();
+var tempDate = checkDateTime(M, D);
+M = tempDate[0], D = tempDate[1];
+var curDay = Y + '-' + M + '-' + D;
+
+// console.log(curDay);
+$('#searchBegin').val(startDay + 'T00:00');
+$('#searchEnd').val(endDay + 'T00:00');
+$('.searchDateTime').val(curDay + 'T00:00');
+
+// 设置前flag天的时间
+
+function checkDateTime(M, D) {
+    if (D < 0) {
+        if (M == "1" || M == "3" || M == "5" || M == "7" || M == "8" || M == "10" || M == "12") {
+            D = 31 - 6;
+        }
+        else if (M == 2) {
+            if (M % 4 == 0 && M % 100 != 0)
+                D = 29 - 6;
+            else
+                D = 28 - 6;
+        }
+        else
+            D = 30 - 6;
+        M -= 1;
+        if (M < 0) {
+            M = 12;
+            Y -= 1;
+        }
+    }
+    if ((M + '').length == 1) {
+        M = '0' + (M + '');
+    }
+    if ((D + '').length == 1) {
+        D = '0' + (D + '')
+    }
+    return [M,D];
+}
+
+function setDatetimeLocal(flag) {
+    if (flag >= 0) {
+        myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() - flag;
+        var tempDate = checkDateTime(M, D);
+        M = tempDate[0], D = tempDate[1];
+        var startDay = Y + '-' + M + '-' + D;
+        $('#searchBegin').val(startDay + 'T00:00');
+    }
+    else{
+        alert("输入日期有误！");
+    }
+}

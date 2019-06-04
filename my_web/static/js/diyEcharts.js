@@ -1,4 +1,4 @@
-document.write("<script language=javascript src='/static/js/map_operations.js'></script>");
+
 var dom = document.getElementById("EchartsContainer");
 var myChart = echarts.init(dom);
 var app = {};

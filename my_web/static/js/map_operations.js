@@ -1,6 +1,3 @@
-// 调用其他js文件
-document.write("<script language=javascript src='/static/js/disJS.js'></script>");
-
 var x = 120.11934041976929; //经度
 var y = 36.001618315221194; //纬度
 var Lng = [120.11934041976929, 120.12934041976929, 120.13934041976929];
@@ -20,6 +17,8 @@ var peopleNum = [first,second,third];
 
 var isfirstJump = [true,true,true];
 var position = new AMap.LngLat(x, y); // 标准写法
+
+var urls = ["/static/test4", "/static/test2", "/static/test5"];
 
 var cnt = 0;
 //标志位
@@ -87,127 +86,143 @@ function setCnt(a){
 
 // ************************************************************************************
 // 生成marker
-
 function addMarkers() {
- 
-  first = List[cnt*3];
-  second = List[cnt*3+1];
-  third = List[cnt*3+2];
-  peopleNum=[first,second,third];
-  console.log("add: cnt == " + cnt);
-  console.log("peopleNum == " + peopleNum);
-  console.log("warnLimit == " + warnLimit);
   // 生成摄像头marker
-  for (var i = 0; i < cLng.length; ++i) {
-    var status = [cLng[i], cLat[i]];//坐标
-    var marker = new AMap.Marker({
-      map: map,
-      position: status,
-      icon: new AMap.Icon({
-        image: "/static/img/redMarker.png",
-        size: new AMap.Size(30, 35), //图标大小
-        imageSize: new AMap.Size(30, 35),
-      }),
-    });
-    if (peopleNum[i] >= warnLimit[i] && isfirstJump[i] == true) {
-      // 生成警报
-      marker.setAnimation("AMAP_ANIMATION_BOUNCE");
-      isfirstJump[i] = false;
-      createWarning(2);
-    }
-    else if(peopleNum[i] < warnLimit[i] && isfirstJump[i] == false){
-      // 警报消失，重新计数
-      isfirstJump[i] = true;
-      // removeWarning();
-    }
-    
-
-    
-
-    // 生成窗体信息变量
-    var topic = "摄像头信息";
-    var cameraID = "ID-3";
-    var info = createCameraString(topic, cameraID, cLng[i], cLat[i]);
-    marker.content = info;
-    var that = this;
-    marker.on('click', function (e) {
-      if (getStartLocation == false && getEndLocation == false){
-        markerClick(e);
-        this.setAnimation("AMAP_ANIMATION_NONE");
-        console.log("i == " + that.i);
-        // 对象内调用自己的属性
-        // 正常情况下点击marker是打不开此部分的
-        // 用flag的话目前做不到针对每个marker分别取值
-        // createWarning(1);
+  for (var j = 0; j < cLng.length; ++j) {
+    (function (i) {
+      var status = [cLng[i], cLat[i]];//坐标
+      var marker = new AMap.Marker({
+        map: map,
+        position: status,
+        icon: new AMap.Icon({
+          image: "/static/img/redMarker.png",
+          size: new AMap.Size(30, 35), //图标大小
+          imageSize: new AMap.Size(30, 35),
+        }),
+      });
+      if (peopleNum[i] >= warnLimit[i] && isfirstJump[i] == true) {
+        // 生成警报
+        marker.setAnimation("AMAP_ANIMATION_BOUNCE");
+        isfirstJump[i] = false;
       }
-      // 获取生成路径的起始点和终点的坐标
-      else {
-        if (getStartLocation == true) {
-          startLngLat = e.target;
-          getStartLocation = false;
-          getEndLocation = true;
-          startLngLat.setAnimation("AMAP_ANIMATION_BOUNCE");
-        }
-        else if (getEndLocation == true) {
-          endLngLat = e.target;
-          getEndLocation = false;
-          startLngLat.setAnimation("AMAP_ANIMATION_NONE");
-          createRoute();
-        }
+      else if (peopleNum[i] < warnLimit[i] && isfirstJump[i] == false) {
+        // 警报消失，重新计数
+        isfirstJump[i] = true;
       }
-    });
-    marker.on('dblclick', open_video);
-    // 地图上标记完后存入队列
-    camera_markers.push(marker);
+
+      // 生成窗体信息变量
+      var topic = "摄像头信息";
+      var cameraID = "ID-3";
+      var info = createCameraString(topic, cameraID, cLng[i], cLat[i]);
+      marker.content = info;
+
+      var url = urls[i];
+      console.log("urls = " + url);
+
+      var that = this;
+      marker.on('click', function (e) {
+        if (getStartLocation == false && getEndLocation == false) {
+          // 显示信息窗体
+          markerClick(e);
+          // marker跳动
+          this.setAnimation("AMAP_ANIMATION_NONE");
+          // 创建轮播插件中告警信息页
+          createWarning(i);
+          // 点击marker跳转至Swiper
+          jumpToSwiper(e, 2);
+        }
+        // 获取生成路径的起始点和终点的坐标
+        else {
+          if (getStartLocation == true) {
+            startLngLat = e.target;
+            getStartLocation = false;
+            getEndLocation = true;
+            startLngLat.setAnimation("AMAP_ANIMATION_BOUNCE");
+          }
+          else if (getEndLocation == true) {
+            endLngLat = e.target;
+            getEndLocation = false;
+            startLngLat.setAnimation("AMAP_ANIMATION_NONE");
+            createRoute();
+          }
+        }
+      });
+      // 右键菜单
+      marker.on('rightclick', function (e) {
+        //创建右键菜单
+        var contextMenu = new AMap.ContextMenu();
+        // 摄像头添加右键菜单内容
+        contextMenu.addItem("实时视频", function (e) {
+          console.log("this marker's url == " + url);
+          open_video(e, url);
+        }, 0);
+        contextMenu.addItem("解决方案", function () {
+          if (peopleNum[i] >= warnLimit[i]) {
+            startLngLat = e.target;
+            console.log(startLngLat);
+            endLngLat = security_markers.pop();
+            createRoute();
+          }
+          else {
+            alert("无告警情况产生!");
+          }
+        }, 1);
+        contextMenu.addItem("清除路径", function () {
+          clearRoute()
+        }, 2);
+        contextMenu.open(map, e.lnglat);
+      });
+      // 地图上标记完后存入队列
+      camera_markers.push(marker);
+    })(j);
   }
 
   //安保markers
-  for (var i = 0; i < sLng.length; ++i) {
-    var status = [sLng[i], sLat[i]];//坐标
-    var marker = new AMap.Marker({
-      map: map,
-      position: status,
-      icon: new AMap.Icon({
-        image: "/static/img/blueMarker.png",
-        size: new AMap.Size(30, 35), //图标大小
-        imageSize: new AMap.Size(30, 35)
-      })
-    });
-    // 生成窗体信息变量
-    var topic = "安保信息";
-    var capName = "邓艾";
-    var teamID = 228;
-    marker.on('click', function (e) {
-      if (getStartLocation == false && getEndLocation == false)
-        markerClick(e);
-      // 获取生成路径的起始点和终点的坐标
-      else {
-        if (getStartLocation == true) {
-          startLngLat = e.target;
-          getStartLocation = false;
-          getEndLocation = true;
-          startLngLat.setAnimation("AMAP_ANIMATION_BOUNCE");
+  for (var j = 0; j < sLng.length; ++j) {
+    (function (i) {
+      var status = [sLng[i], sLat[i]];//坐标
+      var marker = new AMap.Marker({
+        map: map,
+        position: status,
+        icon: new AMap.Icon({
+          image: "/static/img/blueMarker.png",
+          size: new AMap.Size(30, 35), //图标大小
+          imageSize: new AMap.Size(30, 35)
+        })
+      });
+      // 生成窗体信息变量
+      var topic = "安保信息";
+      var capName = "邓艾";
+      var teamID = 228;
+      marker.on('click', function (e) {
+        if (getStartLocation == false && getEndLocation == false) {
+          markerClick(e);
+          jumpToSwiper(e, 1);
         }
-        else if (getEndLocation == true) {
-          endLngLat = e.target;
-          getEndLocation = false;
-          startLngLat.setAnimation("AMAP_ANIMATION_NONE");
-          // 两个点都获取到了，开始生成路径
-          createRoute();
+        // 获取生成路径的起始点和终点的坐标
+        else {
+          if (getStartLocation == true) {
+            startLngLat = e.target;
+            getStartLocation = false;
+            getEndLocation = true;
+            startLngLat.setAnimation("AMAP_ANIMATION_BOUNCE");
+          }
+          else if (getEndLocation == true) {
+            endLngLat = e.target;
+            getEndLocation = false;
+            startLngLat.setAnimation("AMAP_ANIMATION_NONE");
+            // 两个点都获取到了，开始生成路径
+            createRoute();
+          }
         }
-      }
-    });
-    var info = createSecurityString(topic, capName, teamID, sLng[i], sLat[i]);
-    marker.content = info;
-    // marker.on('click', open_securityPage);
-    // 地图上标记完后存入队列
-    security_markers.push(marker);
-    // console.log('security == \n' + marker);
+      });
+      var info = createSecurityString(topic, capName, teamID, sLng[i], sLat[i]);
+      marker.content = info;
+      // 地图上标记完后存入队列
+      security_markers.push(marker);
+    })(j);
   }
-  // console.log("生成一次markers");
- 
 }
-
 
 function markerClick(e) {
   e = e || window.event;
@@ -255,11 +270,10 @@ function remove_marker(flag) {
   map.remove(deletemarker);
 }
 // 不能带参数，带参数就会自动调用
-function open_video(e) {
+function open_video(e, url) {
   e = e || window.event;
-  // console.log("vidoeNum == ");
-  //  var status = e.target.getPosition();
-  window.location.href = "/videoView";
+  console.log("map,url == " + url);
+  location = "/videoView?url=" + url;
 }
 
 Interval = 10000;
@@ -269,5 +283,24 @@ function refreshMarkers() {
   // console.log("clear once!");
 }
 
-// 刷新生成marker
-// self.setInterval("refreshMarkers()", Interval);
+// 点击marker，Swiper跳转至第三页
+function jumpToSwiper(e, flag) {
+  var mySwiper = new Swiper('.swiper-container', {
+    /*启动动态检查器，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。*/
+    observer: true,
+    /*将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新。*/
+    observeParents: true,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    // loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+  mySwiper.slideTo(flag, 1000, false);//切换到第一个slide，速度为1秒
+}
