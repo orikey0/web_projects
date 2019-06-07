@@ -101,9 +101,6 @@ option02 = {
             },
             markLine: {
                 data: [
-                    // 横向图表不需要xAxis, yAxis决定标记线的位置
-                    // {type : 'average', name: '平均值'}
-                    // {name:'阈值1', value:'13', xAxis:7, yAxis:13}
                     { name: '阈值1', value: '13', yAxis: 13 }
                 ]
             }
@@ -114,8 +111,6 @@ option02 = {
             data: [4.0, 4.0, 2.0, 4.0, 7.0, 8.0, 10.0, 11.0, 4.0, 2.0, 9.0, 6.0, 5.0, 3.0, 4.0, 1.0, 3.0, 6.0, 12.0, 8.0, 5.0, 2.0, 2.0, 2.0],
             markPoint: {
                 data: [
-                    // {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183},
-                    // {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
                     { type: 'max', name: '最大值' },
                     { type: 'min', name: '最小值' }
                 ]
@@ -146,279 +141,287 @@ option02 = {
     ]
 };
 
-var dataMap = {};
-function dataFormatter(obj) {
-    var pList = ['0时', '1时', '2时', '3时', '4时', '5时', '6时', '7时', '8时', '9时', '10时', '11时', '12时', '13时', '14时', '15时', '16时', '17时', '18时', '19时', '20时', '21时', '22时', '23时'];
-    var temp;
-    for (var day = 01; day <= 07; day++) {
-        var max = 0;
-        var sum = 0;
-        temp = obj[day];
-        for (var i = 0, l = temp.length; i < l; i++) {
-            max = Math.max(max, temp[i]);
-            sum += temp[i];
-            obj[day][i] = {
-                name: pList[i],
-                value: temp[i]
-            }
-        }
-        obj[day + 'max'] = Math.floor(max / 100) * 100;
-        obj[day + 'sum'] = sum;
-    }
-    // console.log(obj);
-    return obj;
-}
-
-// 摄像头1
-dataMap.dataPI = dataFormatter({
-    1: [7, 9, 3, 10, 6, 1, 3, 9, 7, 6, 6, 8, 6, 6, 6, 1, 6, 5, 0, 1, 10, 0, 8, 8],
-    2: [1, 2, 5, 9, 10, 4, 4, 7, 5, 3, 6, 1, 5, 6, 1, 8, 10, 5, 5, 8, 2, 8, 3, 4],
-    3: [6, 8, 1, 5, 1, 6, 5, 7, 7, 10, 3, 1, 1, 2, 8, 5, 9, 3, 0, 10, 7, 1, 7, 10],
-    4: [0, 10, 5, 4, 3, 6, 4, 1, 3, 4, 1, 5, 5, 10, 10, 2, 3, 2, 1, 8, 2, 5, 4, 2],
-    5: [5, 8, 9, 6, 2, 1, 1, 7, 2, 2, 5, 4, 7, 5, 5, 9, 5, 10, 3, 5, 6, 3, 0, 10],
-    6: [1, 4, 5, 5, 4, 4, 8, 7, 0, 2, 1, 0, 4, 6, 3, 6, 6, 2, 0, 1, 7, 3, 2, 8],
-    7: [3, 0, 8, 7, 1, 0, 4, 9, 2, 9, 6, 2, 8, 4, 3, 8, 3, 10, 5, 10, 10, 6, 2, 0],
-
-});
-// 摄像头2
-dataMap.dataSI = dataFormatter({
-    1: [5, 9, 10, 8, 4, 5, 6, 5, 3, 5, 7, 6, 6, 2, 2, 0, 1, 5, 8, 7, 3, 4, 3, 0],
-    2: [9, 9, 9, 3, 9, 5, 3, 8, 9, 2, 6, 3, 9, 2, 2, 8, 10, 7, 9, 5, 2, 5, 3, 10],
-    3: [0, 4, 3, 9, 5, 9, 0, 2, 4, 3, 5, 5, 8, 5, 4, 4, 3, 0, 5, 9, 5, 2, 4, 10],
-    4: [2, 10, 2, 4, 3, 10, 6, 9, 10, 5, 5, 9, 3, 2, 10, 3, 4, 8, 9, 7, 3, 8, 5, 7],
-    5: [2, 3, 9, 8, 7, 1, 2, 8, 7, 1, 9, 5, 7, 7, 4, 1, 10, 2, 3, 9, 9, 5, 1, 5],
-    6: [5, 0, 1, 3, 3, 9, 1, 7, 10, 3, 10, 7, 4, 0, 3, 8, 1, 6, 7, 6, 8, 3, 10, 3],
-    7: [2, 5, 2, 5, 2, 4, 1, 4, 1, 8, 2, 8, 3, 2, 4, 2, 7, 7, 8, 10, 10, 2, 7, 10],
-
-});
-// 摄像头3
-dataMap.dataTI = dataFormatter({
-    1: [9, 7, 7, 3, 0, 3, 1, 0, 8, 3, 5, 8, 9, 9, 7, 6, 2, 10, 0, 9, 4, 1, 5, 3],
-    2: [9, 5, 9, 10, 7, 2, 8, 3, 6, 3, 7, 2, 9, 7, 1, 10, 6, 6, 8, 10, 1, 10, 0, 5],
-    3: [1, 2, 5, 10, 3, 5, 0, 0, 0, 5, 1, 5, 7, 6, 5, 10, 9, 5, 5, 1, 4, 8, 4, 9],
-    4: [4, 10, 7, 7, 9, 9, 10, 10, 9, 8, 7, 4, 2, 8, 1, 6, 9, 1, 7, 8, 4, 1, 10, 9],
-    5: [5, 5, 6, 2, 10, 2, 8, 9, 5, 1, 5, 7, 1, 8, 10, 10, 5, 3, 8, 2, 1, 8, 10, 7],
-    6: [2, 6, 8, 4, 6, 5, 6, 9, 7, 7, 10, 2, 5, 4, 9, 3, 5, 9, 0, 5, 6, 0, 8, 6],
-    7: [10, 1, 1, 4, 4, 4, 7, 9, 5, 3, 5, 7, 10, 1, 2, 2, 6, 9, 2, 5, 1, 2, 5, 4],
-});
-
-
-
 option03 = {
-    // 底下那个栏
-    baseOption: {
-        timeline: {
-            axisType: 'category',
-            // autoPlay: true,
-            // 展示停留时长
-            playInterval: 1000,
-            data: [
-                '04-01', '04-02', '04-03',
-                '04-04', '04-05', '04-06', '04-07',
-            ],
-        },
-        title: {
-            subtext: '24小时预警次数'
-        },
-        tooltip: {
-        },
-        // 右上选择标签
-        legend: {
-            x: 'left',
-            data: ['摄像头01', '摄像头02', '摄像头03'],
-        },
-        calculable: true,
-        grid: {
-            top: 80,
-            bottom: 100,
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow',
-                    label: {
-                        show: true,
-                        formatter: function (params) {
-                            return params.value.replace('\n', '');
-                        }
-                    }
-                }
-            }
-        },
-        xAxis: [
-            {
-                'type': 'category',
-                'axisLabel': { 'interval': 0 },
-                'data': [
-                    '0时', '\n1时', '\n2时', '\n3时', '\n4时', '\n5时',
-                    '6时', '\n7时', '\n8时', '\n9时', '\n10时', '\n11时',
-                    '12时', '\n13时', '\n14时', '\n15时', '\n16时', '\n17时',
-                    '18时', '\n19时', '\n20时', '\n21时', '\n22时', '\n23时'
-                ],
-                splitLine: { show: false }
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                name: '人次'
-            }
-        ],
-        // 右上角扇形
-        series: [
-            { name: '摄像头01', type: 'bar' },
-            { name: '摄像头02', type: 'bar' },
-            { name: '摄像头03', type: 'bar' },
-            {
-                name: '人流量占比',
-                type: 'pie',
-                center: ['75%', '35%'],
-                radius: '28%',
-                z: 100
-            }
-        ]
+    tooltip: {
+        show: true,
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+        }
     },
-    options: [
+    legend: {
+        data: ['摄像头1', '摄像头2', '摄像头3'],
+        x: 'right'
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        axisLabel: {
+            interval: 0,
+            rotate: 40
+        },
+        data: ['0时0分', '0时15分', '0时30分', '0时45分', '1时0分', '1时15分', '1时30分', '1时45分', '2时0分', '2时15分', '2时30分', '2时45分', '3时0分', '3时15分', '3时30分', '3时45分', '此时']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
         {
-            title: { text: '4月1日拥堵分析', x: 'center' },
-            series: [
-                { data: dataMap.dataPI['1'] },
-                { data: dataMap.dataSI['1'] },
-                { data: dataMap.dataTI['1'], barGap: '0%', },
-                // 设置一个barGap: '0%'，即可全部设置为紧邻的
-                // 右上角扇形
-                {
-                    data: [
-                        { name: '摄像头01', value: dataMap.dataPI['1sum'] },
-                        { name: '摄像头02', value: dataMap.dataSI['1sum'] },
-                        { name: '摄像头03', value: dataMap.dataTI['1sum'] }
-                    ],
-                    center:['91%','12%'],
-                    radius : '20%',
-                }
-            ]
+            name: '摄像头1',
+            data: [0.44, 0.41, 0.6, 0.71, 0.51, 0.27, 0.38, 0.76, 0.29, 0.42, 0.32, 0.61, 0.48, 0.07, 0.38, 0.62, 0.4],
+            type: 'line',
+            smooth: true,
+            markLine: {
+                data: [
+                    { name: '阈值1', value: '0.6', yAxis: 0.6, label: { formatter: function (params) { str = '轻微拥挤'; return str } } },
+                    { name: '阈值2', value: '0.8', yAxis: 0.8, label: { formatter: function (params) { str = '严重拥挤'; return str } } },
+                    { name: '阈值3', value: '此时', xAxis: '此时' },
+                ],
+                symbol: ['none', 'none']
+            },
+            areaStyle: {
+                color: "gray"
+            },
         },
         {
-            title: { text: '4月2日拥堵分析', x: 'center' },
-            series: [
-                { data: dataMap.dataPI['2'] },
-                { data: dataMap.dataSI['2'] },
-                { data: dataMap.dataTI['2'] },
-                {
-                    data: [
-                        { name: '摄像头01', value: dataMap.dataPI['2sum'] },
-                        { name: '摄像头02', value: dataMap.dataSI['2sum'] },
-                        { name: '摄像头03', value: dataMap.dataTI['2sum'] }
-                    ],
-                    center:['91%','12%'],
-                    radius : '20%',
-                }
-            ]
+            name: '摄像头2',
+            data: [0.41, 0.86, 0.65, 0.4, 0.82, 0.56, 0.41, 0.23, 0.96, 0.17, 0.27, 0.04, 0.64, 0.38, 0.72, 0.36, 0.15, 0.8, 0.63, 0.9],
+            type: 'line',
+            smooth: true,
+            markLine: {
+                data: [
+                    { name: '阈值1', value: '0.6', yAxis: 0.6, label: { formatter: function (params) { str = '轻微拥挤'; return str } } },
+                    { name: '阈值2', value: '0.8', yAxis: 0.8, label: { formatter: function (params) { str = '严重拥挤'; return str } } },
+                    { name: '阈值3', value: '此时', xAxis: '此时' },
+                ],
+                symbol: ['none', 'none']
+            },
+            areaStyle: {
+                color: "gray"
+            },
         },
         {
-            title: { text: '4月3日拥堵分析', x: 'center' },
-            series: [
-                { data: dataMap.dataPI['3'] },
-                { data: dataMap.dataSI['3'] },
-                { data: dataMap.dataTI['3'] },
-                {
-                    data: [
-                        { name: '摄像头01', value: dataMap.dataPI['3sum'] },
-                        { name: '摄像头02', value: dataMap.dataSI['3sum'] },
-                        { name: '摄像头03', value: dataMap.dataTI['3sum'] }
-                    ],
-                    center:['91%','12%'],
-                    radius : '20%',
-                }
-            ]
-        },
-        {
-            title: { text: '4月4日拥堵分析', x: 'center' },
-            series: [
-                { data: dataMap.dataPI['4'] },
-                { data: dataMap.dataSI['4'] },
-                { data: dataMap.dataTI['4'] },
-                {
-                    data: [
-                        { name: '摄像头01', value: dataMap.dataPI['4sum'] },
-                        { name: '摄像头02', value: dataMap.dataSI['4sum'] },
-                        { name: '摄像头03', value: dataMap.dataTI['4sum'] }
-                    ],
-                    center:['91%','12%'],
-                    radius : '20%',
-                }
-            ]
-        },
-        {
-            title: { text: '4月5日拥堵分析', x: 'center' },
-            series: [
-                { data: dataMap.dataPI['5'] },
-                { data: dataMap.dataSI['5'] },
-                { data: dataMap.dataTI['5'] },
-                {
-                    data: [
-                        { name: '摄像头01', value: dataMap.dataPI['5sum'] },
-                        { name: '摄像头02', value: dataMap.dataSI['5sum'] },
-                        { name: '摄像头03', value: dataMap.dataTI['5sum'] }
-                    ],
-                    center:['91%','12%'],
-                    radius : '20%',
-                }
-            ]
-        },
-        {
-            title: { text: '4月6日拥堵分析', x: 'center' },
-            series: [
-                { data: dataMap.dataPI['6'] },
-                { data: dataMap.dataSI['6'] },
-                { data: dataMap.dataTI['6'] },
-                {
-                    data: [
-                        { name: '摄像头01', value: dataMap.dataPI['6sum'] },
-                        { name: '摄像头02', value: dataMap.dataSI['6sum'] },
-                        { name: '摄像头03', value: dataMap.dataTI['6sum'] }
-                    ],
-                    center:['91%','12%'],
-                    radius : '20%',
-                }
-            ]
-        },
-        {
-            title: { text: '4月7日拥堵分析', x: 'center' },
-            series: [
-                { data: dataMap.dataPI['7'] },
-                { data: dataMap.dataSI['7'] },
-                { data: dataMap.dataTI['7'] },
-                {
-                    data: [
-                        { name: '摄像头01', value: dataMap.dataPI['7sum'] },
-                        { name: '摄像头02', value: dataMap.dataSI['7sum'] },
-                        { name: '摄像头03', value: dataMap.dataTI['7sum'] }
-                    ],
-                    center:['91%','12%'],
-                    radius : '20%',
-                }
-            ]
-        },
+            name: '摄像头3',
+            data: [0.32, 0.91, 0.04, 0.66, 0.08, 0.52, 0.13, 0.84, 0.36, 0.03, 0.58, 0.99, 0.35, 0.61, 0.42, 0.55, 0.01, 0.53, 0.53, 0.32],
+            type: 'line',
+            smooth: true,
+            markLine: {
+                data: [
+                    { name: '阈值1', value: '0.6', yAxis: 0.6, label: { formatter: function (params) { str = '轻微拥挤'; return str } } },
+                    { name: '阈值2', value: '0.8', yAxis: 0.8, label: { formatter: function (params) { str = '严重拥挤'; return str } } },
+                    { name: '阈值3', value: '此时', xAxis: '此时' },
+                ],
+                symbol: ['none', 'none']
+            },
+            areaStyle: {
+                color: "gray"
+            },
+        }
     ]
-
 };
 
-if (option01 && typeof option01 === "object") {
-    myChart.setOption(option01, true);
+function changeChart() {
+    option03 = {
+        tooltip: {
+            show: true,
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data: ['摄像头1', '摄像头2', '摄像头3'],
+            x: 'right'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            axisLabel: {
+                interval: 0,
+                rotate: 40
+            },
+            data: ['0时0分', '0时15分', '0时30分', '0时45分', '1时0分', '1时15分', '1时30分', '1时45分', '2时0分', '2时15分', '2时30分', '2时45分', '3时0分', '3时15分', '3时30分', '3时45分', '此时', '0时15分', '0时30分', '0时45分', '1时0分'],
+        },
+        axisLabel: {
+            interval: 0,
+            rotate: 40
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: '摄像头1',
+                data: [0.44, 0.41, 0.6, 0.71, 0.51, 0.27, 0.38, 0.76, 0.29, 0.42, 0.32, 0.61, 0.48, 0.07, 0.38, 0.62, 0.4, 0.03, 0.25, 0.83, 0.53],
+                type: 'line',
+                smooth: true,
+                markLine: {
+                    data: [
+                        { name: '阈值1', value: '0.6', yAxis: 0.6, label: { formatter: function (params) { str = '轻微拥挤'; return str } } },
+                        { name: '阈值2', value: '0.8', yAxis: 0.8, label: { formatter: function (params) { str = '严重拥挤'; return str } } },
+                        { name: '阈值3', value: '此时', xAxis: '此时' },
+                    ],
+                    symbol: ['none', 'none']
+                },
+                areaStyle: {
+                    color: "gray"
+                },
+            },
+            {
+                name: '摄像头2',
+                data: [0.38, 0.41, 0.86, 0.65, 0.4, 0.82, 0.56, 0.41, 0.23, 0.96, 0.17, 0.27, 0.04, 0.64, 0.38, 0.72, 0.36, 0.15, 0.8, 0.63, 0.9],
+                type: 'line',
+                smooth: true,
+                markLine: {
+                    data: [
+                        { name: '阈值1', value: '0.6', yAxis: 0.6, label: { formatter: function (params) { str = '轻微拥挤'; return str } } },
+                        { name: '阈值2', value: '0.8', yAxis: 0.8, label: { formatter: function (params) { str = '严重拥挤'; return str } } },
+                        { name: '阈值3', value: '此时', xAxis: '此时' },
+                    ],
+                    symbol: ['none', 'none']
+                },
+                areaStyle: {
+                    color: "gray"
+                },
+            },
+            {
+                name: '摄像头3',
+                data: [0.35, 0.32, 0.91, 0.04, 0.66, 0.08, 0.52, 0.13, 0.84, 0.36, 0.03, 0.58, 0.99, 0.35, 0.61, 0.42, 0.55, 0.01, 0.53, 0.53, 0.32],
+                type: 'line',
+                smooth: true,
+                markLine: {
+                    data: [
+                        { name: '阈值1', value: '0.6', yAxis: 0.6, label: { formatter: function (params) { str = '轻微拥挤'; return str } } },
+                        { name: '阈值2', value: '0.8', yAxis: 0.8, label: { formatter: function (params) { str = '严重拥挤'; return str } } },
+                        { name: '阈值3', value: '此时', xAxis: '此时' },
+                    ],
+                    symbol: ['none', 'none']
+                },
+                areaStyle: {
+                    color: "gray"
+                },
+            }
+        ]
+    };
+}
+
+
+function returnChart() {
+    option03 = {
+        tooltip: {
+            show: true,
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data: ['摄像头1', '摄像头2', '摄像头3'],
+            x: 'right'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            axisLabel: {
+                interval: 0,
+                rotate: 40
+            },
+            data: ['0时0分', '0时15分', '0时30分', '0时45分', '1时0分', '1时15分', '1时30分', '1时45分', '2时0分', '2时15分', '2时30分', '2时45分', '3时0分', '3时15分', '3时30分', '3时45分', '此时']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: '摄像头1',
+                data: [0.44, 0.41, 0.6, 0.71, 0.51, 0.27, 0.38, 0.76, 0.29, 0.42, 0.32, 0.61, 0.48, 0.07, 0.38, 0.62, 0.4],
+                type: 'line',
+                smooth: true,
+                markLine: {
+
+                    data: [
+                        { name: '阈值1', value: '0.6', yAxis: 0.6 },
+                        { name: '阈值2', value: '0.8', yAxis: 0.8 },
+                        { name: '阈值3', value: '此时', xAxis: '此时' },
+                    ],
+                    symbol: ['none', 'none']
+                },
+                areaStyle: {
+                    color: "gray"
+                },
+            },
+
+            {
+                name: '摄像头2',
+                data: [0.41, 0.86, 0.65, 0.4, 0.82, 0.56, 0.41, 0.23, 0.96, 0.17, 0.27, 0.04, 0.64, 0.38, 0.72, 0.36, 0.15, 0.8, 0.63, 0.9],
+                type: 'line',
+                smooth: true,
+                markLine: {
+                    data: [
+                        { name: '阈值1', value: '0.6', yAxis: 0.6 },
+                        { name: '阈值2', value: '0.8', yAxis: 0.8 },
+                        { name: '阈值3', value: '此时', xAxis: '此时' },
+                    ],
+                    symbol: ['none', 'none']
+                },
+                areaStyle: {
+                    color: "gray"
+                },
+            },
+            {
+                name: '摄像头3',
+                data: [0.32, 0.91, 0.04, 0.66, 0.08, 0.52, 0.13, 0.84, 0.36, 0.03, 0.58, 0.99, 0.35, 0.61, 0.42, 0.55, 0.01, 0.53, 0.53, 0.32],
+                type: 'line',
+                smooth: true,
+                markLine: {
+                    data: [
+                        { name: '阈值1', value: '0.6', yAxis: 0.6 },
+                        { name: '阈值2', value: '0.8', yAxis: 0.8 },
+                        { name: '阈值3', value: '此时', xAxis: '此时' },
+                    ],
+                    symbol: ['none', 'none']
+                },
+                areaStyle: {
+                    color: "gray"
+                },
+            }
+        ]
+    };
+}
+
+if (option01 && typeof option03 === "object") {
+    myChart.setOption(option03, true);
 }
 
 function refreshDiv(flag) {
     // console.log("刷新频率为:" + Interval);
     if (flag == 1 && option01 && typeof option01 === "object") {
         setDatetimeLocal(1);
+        $('#exceedThreshold02').html('拥堵预测');
         myChart.setOption(option01, true);
     }
     if (flag == 2 && option02 && typeof option02 === "object") {
         setDatetimeLocal(1);
+        $('#exceedThreshold02').html('拥堵预测');
         myChart.setOption(option02, true);
     }
     if (flag == 3 && option03 && typeof option03 === "object") {
         setDatetimeLocal(7);
-        myChart.setOption(option03, true);
+        console.log($('#exceedThreshold02').text());
+        if ($('#exceedThreshold02').text() == '拥堵预测') {
+            alert('预测完成!');
+            $('#exceedThreshold02').text('预测完成');
+            changeChart();
+            myChart.setOption(option03, true);
+        }
+        else if ($('#exceedThreshold02').text() == '预测完成') {
+            flag = confirm('是否撤销预测？');
+            console.log(flag);
+            if (flag == true) {
+                $('#exceedThreshold02').text('拥堵预测');
+                returnChart();
+                myChart.setOption(option03, true);
+            }
+        }
     }
 }

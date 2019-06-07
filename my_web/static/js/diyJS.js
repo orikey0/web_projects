@@ -1,4 +1,4 @@
-
+// 调用Swiper的JS文件,用作点击快速移动后刷新轮播
 function openFunction(name) {
     var property = document.getElementById(name);
     property.style.display = "block";
@@ -38,57 +38,65 @@ var warnType = ['快速移动', '人群拥挤', '人数超限'];
 var ID = ['ID-1', 'ID-2', 'ID-3'];
 // 不能叫location,已经被使用了
 var place = ['科技大学北', '大学生活动中心', 'J13正门'];
+var capNames = ['邓艾', '邵秋', '张秋'];
+var securityNames = [['秦羽', '班杰明', '徐冰'], ['单质帅', '华黎候', '贾诩'], ['马德华', '伊伍凡', '田科']];
+var capTels = ['17866321964', '17865751486', '17865149378'];
+var securityPlaces = ['J1教学楼', '家属区', '尤洛卡广场'];
+var teamIDs = ['228', '229', '230'];
+var iswork = ['未出勤', '未出勤', '未出勤',];
 
-// 生成轮播预警信息的具体内容
+// 生成轮播安保/预警信息的具体内容
 function createContent(flag) {
     var content = '';
-    content += "<tr><th><i class='icon_ID'></i> 编号</th><th><i class='icon_ribbon'></i> 类型</th><th><i class='icon_documents'></i>信息</th></tr>";
-    content += "<tr><td>1</td><td>异常类型</td><td>" + warnType[flag] + "</td></tr>";
-    content += "<tr><td>2</td><td>设备编号</td><td>" + ID + "</td></tr>";
-    content += "<tr><td>3</td><td>地点</td><td>" + place[flag] + "</td></tr>";
-    content += "<tr><td>4</td><td>阈值人数</td><td>" + warnLimit[flag] + "</td></tr>";
-    content += "<tr><td>5</td><td>人数</td><td>" + peopleNum[flag] + "</td></tr>";
-    var html = "<tbody>" + content + "</tbody>"
+    var html = '';
+    if (flag < 3) {
+        content += "<tr><th><i class='icon_ID'></i> 编号</th><th><i class='icon_ribbon'></i> 类型</th><th><i class='icon_documents'></i>信息</th></tr>";
+        content += "<tr><td>1</td><td>异常类型</td><td>" + warnType[flag] + "</td></tr>";
+        content += "<tr><td>2</td><td>设备编号</td><td>" + ID[flag] + "</td></tr>";
+        content += "<tr><td>3</td><td>地点</td><td>" + place[flag] + "</td></tr>";
+        content += "<tr><td>4</td><td>阈值人数</td><td>" + warnLimit[flag] + "</td></tr>";
+        content += "<tr><td>5</td><td>人数</td><td>" + peopleNum[flag] + "</td></tr>";
+        html = "<tbody>" + content + "</tbody>"
+    }
+    if (flag >= 3) {
+        content += "<tr><th><i class='icon_ID'></i> 编号</th><td>" + teamIDs[flag - 3] + "</td>";
+        content += "<tr><th><i class='icon_pin'></i> 驻地</th><td>" + securityPlaces[flag - 3] + "</td></tr>";
+        content += "<tr><th><i class='icon_profile'</i> 队长</th><td>" + capNames[flag - 3] + "</td></tr>";
+        content += "<tr><th><i class='icon_group'></i> 队员1</th><td>" + securityNames[flag - 3][0] + "</td></tr>";
+        content += "<tr><th><i class='icon_group'></i> 队员2</th><td>" + securityNames[flag - 3][1] + "</td></tr>";
+        content += "<tr><th><i class='icon_group'></i> 队员3</th><td>" + securityNames[flag - 3][2] + "</td></tr>";
+        content += "<tr><th><i class='icon_mobile'</i> 联系方式</th><td>" + capTels[flag - 3] + "</td></tr>";
+        content += "<tr><th class='icon_star'>是否出勤</th><td>" + iswork[flag - 3] + "</td></tr>";
+        html = "<tbody>" + content + "</tbody>"
+    }
     return html;
 }
 
 // 轮播的预警信息页面改变颜色js,Jquery
 // 将Jquery封装成函数供marker使用
+// 改变告警颜色
 function createWarning(flag) {
-    $("#ss03").css({ "display": "block" });
-    mySwiper.update();
-    var contentColor;
-    if (flag == 0)
-        contentColor = "#00c4ff";
-    else if (flag == 1)
-        contentColor = "orange"
-    else if (flag == 2)
-        contentColor = "red";
-    $("#seekTable1").css({ "background-color": contentColor, "transition": "all 0.4s" });
-    html = createContent(0);
-    $("#seekTable1").html(html);
+    html = createContent(flag);
+    if (flag < 3) {
+        $("#ss03").css({ "display": "block" });
+        var contentColor;
+        if (flag == 0)
+            contentColor = "#00c4ff";
+        else if (flag == 1)
+            contentColor = "orange"
+        else if (flag == 2)
+            contentColor = "red";
+        $("#seekTable1").css({ "background-color": contentColor, "transition": "all 0.4s" });
+        $("#seekTable1").html(html);
+        mySwiper.update();
+    }
+    
+    else if(flag >= 3){
+        $("#ss02").css({ "display": "block" });
+        $("#seekTable2").html(html);
+        mySwiper.update();
+    }
 }
-$("#quickMove").click(function () {
-    $("#ss03").css({ "display": "block" });
-    mySwiper.update();
-    $("#seekTable1").css({ "background-color": "#00c4ff", "transition": "all 0.4s" });
-    html = createContent(0);
-    $("#seekTable1").html(html);
-});
-$("#exceddDensity").click(function () {
-    $("#ss03").css({ "display": "block" });
-    mySwiper.update();
-    $("#seekTable1").css({ "background-color": "orange", "transition": "all 0.4s" });
-    html = createContent(1);
-    $("#seekTable1").html(html);
-});
-$("#exceedThreshold").click(function () {
-    $("#ss03").css({ "display": "block" });
-    mySwiper.update();
-    $("#seekTable1").css({ "background-color": "red", "transition": "all 0.4s" });
-    html = createContent(2);
-    $("#seekTable1").html(html);
-});
 // 实时视频部分
 var myVideo = document.getElementById('videoActive');
 // 倍速
@@ -187,7 +195,7 @@ function setVideoHtml(url) {
     console.log("webm == " + webm);
     console.log("ogg == " + ogg);
     videoHtml = '';
-    videoHtml += "<video id='videoActive' style='object-fit: fill'  autoplay='autoplay' muted>";
+    videoHtml += "<video id='videoActive' style='object-fit: fill' controls='controls' autoplay='autoplay' muted>";
     videoHtml += "<source src=" + mp4 + " type='video/mp4'></source>";
     videoHtml += "<source src=" + ogg + " type='video/ogg'></source>";
     videoHtml += "<source src=" + webm + " type='video/webm'></source>";
@@ -260,25 +268,29 @@ function checkDateTime(M, D) {
     if ((D + '').length == 1) {
         D = '0' + (D + '')
     }
-    return [M,D];
+    return [M, D];
 }
 
 function setDatetimeLocal(flag) {
-    if (flag >= 0) {
+    if (flag >= 0 && flag != 7) {
         myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() - flag;
         var tempDate = checkDateTime(M, D);
         M = tempDate[0], D = tempDate[1];
         var startDay = Y + '-' + M + '-' + D;
         $('#searchBegin').val(startDay + 'T00:00');
     }
-    else{
+    else if (flag == 7) {
+        html = "当前时间:<input id='searchEnd' type='datetime-local'></form>"
+        $('.searchFormCharts').html(html);
+        $('#searchEnd').val(endDay + 'T00:00');
+    }
+    else {
         alert("输入日期有误！");
     }
 }
+
 // 菜单栏动态伸缩
 $('#flexButton').click(function () {
-    // $('#flexButton').attr(".arrow_carrot-2right_alt2"); 
-    // $('#flexButton').remove(".arrow_carrot-2left_alt2"); 
     if ($('#flexButton').hasClass('arrow_carrot-2left_alt2')) {
         $('#flexButton').removeClass('arrow_carrot-2left_alt2');
         $('#flexButton').addClass('arrow_carrot-2right_alt2');

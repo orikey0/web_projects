@@ -11,6 +11,7 @@ from django.template.loader import get_template
 
 
 
+
 def camera_management(request):
     table_duty_peos = table_duty_peo.objects.all()
     table_cams = table_cam.objects.all()
@@ -45,6 +46,8 @@ def run_management(request):
     template = get_template('run_management.html')
     html = template.render(locals())   
     return HttpResponse(html)
+
+
 
 def security_management(request):
     template = get_template('security_management.html')
